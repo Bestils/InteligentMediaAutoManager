@@ -10,4 +10,6 @@ Bibliography:
 https://medium.com/swlh/introduction-to-selenium-create-a-web-bot-with-python-cd59a741fdae
 2. - Xpath problems -
     https://stackoverflow.com/questions/32962004/sometimes-xpath-is-not-working-but-sometimes-same-xpath-is-working-while-running
-
+     
+3. - ChromeExtension Tut -
+    https://www.youtube.com/watch?v=8q1_NkDbfzE&list=PLC3y8-rFHvwg2-q6Kvw3Tl_4xhxtIaNlY
