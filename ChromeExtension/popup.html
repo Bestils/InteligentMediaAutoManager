@@ -3,19 +3,34 @@
     <head>
         <title>BOT</title>
         <script src="jquery-3.6.0.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
         <script src="popup.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-    <h2>SocialPD<br /> Bot Controller</h2>
+    <div id="title">
+        <div id="botIco"></div>
+        <h2>Bot Controller</h2>
+    </div>
+
     <section class="header">
-        <div class="profilePicture">Pic</div>
-        <div class="logInfo">LogInfo</div>
+        <form action="instagram.py" method="get">
+            <div class="profilePicture">
+                <input type="text" class="logLabels" name="username"> Login
+                <br />
+                <br />
+                <input type="text" class="logLabels" name="password"> Password
+
+            </div>
+            <input type="submit" class="logButton" value="LOG IN">
+        </form>
     </section>
 
     <section class="main">
         <div class="leftContent">
             <h3>Statistics</h3>
+            <hr />
+
             <p class="statistics">
                 Followers:
                 <br />
@@ -23,6 +38,7 @@
                     0
                 </div>
             </p>
+
             <p class="statistics">
                 Follows:
                 <br />
@@ -34,6 +50,7 @@
 
         <div class="rightContent">
             <h3>Functions</h3>
+            <hr />
             <div class="functions">
                 <div id="left">
                     <p>Turn ALL:</p>
@@ -44,20 +61,25 @@
 
                 <div id="right">
                     <p>
-                        <input type="button" value="ON">
-                        <input type="button" value="OFF">
+                        <div id="button1">
+                            <div id="dot1"></div>
+                        </div>
+                    </p>
+
+                    <p>
+                        <div id="button2">
+                            <div id="dot2"></div>
+                        </div>
                     </p>
                     <p>
-                        <input type="button" value="ON">
-                        <input type="button" value="OFF">
+                        <div id="button3">
+                            <div id="dot3"></div>
+                        </div>
                     </p>
                     <p>
-                        <input type="button" value="ON">
-                        <input type="button" value="OFF">
-                    </p>
-                    <p>
-                        <input type="button" value="ON">
-                        <input type="button" value="OFF">
+                        <div id="button4">
+                            <div id="dot4"></div>
+                        </div>
                     </p>
                 </div>
             </div>
