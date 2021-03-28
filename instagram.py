@@ -1,12 +1,12 @@
 from Helpers.helper import *
 from selenium import webdriver
-from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
 class Main:
     # Browser Init
-    browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+    browser = webdriver.Chrome(executable_path=ChromeDriverManager().install())
     #   Opening WebSite
     browser.get('https://www.instagram.com/')
 
@@ -20,6 +20,7 @@ class Main:
     login = "patrykgaweda1"
     passwd = "YouKnowNothingJonSnow"
 
+    time.sleep(3)
     browser.find_element_by_name('password').send_keys(passwd)
     browser.find_element_by_name('username').send_keys(login)
 
