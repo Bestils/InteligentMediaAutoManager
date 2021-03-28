@@ -8,19 +8,18 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-    <div id="title">
+    <div id="header">
         <div id="botIco"></div>
         <h2>Bot Controller</h2>
     </div>
 
-    <section class="header">
+    <section class="panel-log">
         <form action="instagram.py" method="get">
-            <div class="profilePicture">
-                <input type="text" class="logLabels" name="username"> Login
+            <div class="labels-log">
+                <input type="text" class="label" name="username"> Login
                 <br />
                 <br />
-                <input type="text" class="logLabels" name="password"> Password
-
+                <input type="text" class="label" name="password"> Password
             </div>
             <input type="submit" class="logButton" value="LOG IN">
         </form>
@@ -31,7 +30,7 @@
             <h3>Statistics</h3>
             <hr />
 
-            <p class="statistics">
+            <p>
                 Followers:
                 <br />
                 <div class="label">
@@ -53,10 +52,21 @@
             <hr />
             <div class="functions">
                 <div id="left">
-                    <p>Turn ALL:</p>
-                    <p>Follow:</p>
-                    <p>LIKE:</p>
-                    <p>Comment:</p>
+                    <p>
+                        Turn ALL:
+                    </p>
+
+                    <p>
+                        Follow:
+                    </p>
+
+                    <p>
+                        LIKE:
+                    </p>
+
+                    <p>
+                        Comment:
+                    </p>
                 </div>
 
                 <div id="right">
@@ -71,11 +81,13 @@
                             <div id="dot2"></div>
                         </div>
                     </p>
+
                     <p>
                         <div id="button3">
                             <div id="dot3"></div>
                         </div>
                     </p>
+
                     <p>
                         <div id="button4">
                             <div id="dot4"></div>

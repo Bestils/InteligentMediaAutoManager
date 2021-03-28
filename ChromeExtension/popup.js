@@ -80,3 +80,15 @@ $(document).ready(function(){
         }
     });
 })
+
+$(document).ready(function(){
+    $(".label").on({
+        focus : function(){
+            $(this).css({"border-color": "#FFEFD5", "background-color": "#EEE8AA"});
+        },
+
+        blur : function(){
+            $(this).css({"border-color": "white", "background-color": "white"});
+        }
+    });
+})
