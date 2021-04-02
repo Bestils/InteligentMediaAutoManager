@@ -8,10 +8,11 @@ body{
     width:300px;
     height:400px;
     color:gray;
-    border:3px solid gray;
+    border:3px solid white;
     border-radius:25px;
     padding:3px 3px 3px 3px;
 }
+
 
 /* TITLE */
 #header{
@@ -48,6 +49,7 @@ h3{
     color:black;
     width:100%;
     height:70px;
+    margin-left:2%;
 }
 
 .labels-log{
@@ -65,9 +67,7 @@ h3{
     width:80px;
     border-color:#EEE8AA;
     outline:none;
-    color: black;
-    font-family:Arial;
-    font-size:12px;
+    color:gray;
 }
 
 .logButton{
@@ -81,6 +81,10 @@ h3{
 }
 
 /* CONTENT */
+.main{
+    position:relative;
+    left:2%;
+}
 .leftContent, .rightContent{
     float:left;
     display:inline-block;
