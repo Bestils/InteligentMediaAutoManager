@@ -2,7 +2,7 @@
 
 - Python 3.8.5
 - PyCharm IDE
-...
+- JQuery 3.6.0 + JQuery UI 
 
 Bibliography:
 
@@ -13,3 +13,6 @@ https://medium.com/swlh/introduction-to-selenium-create-a-web-bot-with-python-cd
      
 3. - ChromeExtension Tut -
     https://www.youtube.com/watch?v=8q1_NkDbfzE&list=PLC3y8-rFHvwg2-q6Kvw3Tl_4xhxtIaNlY
+     
+4. - JQuery Tut -
+    https://www.w3schools.com/jquery/
