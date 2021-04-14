@@ -17,6 +17,13 @@ class Main:
         browser.quit()
 
     # Finding LogIn Elem by Name
+    # ToDO - 1. Getting Login and password from Extension - HTML
+    # ToDO - 2. Hide bot actions unless you are logged IN.
+    # ToDO - 3. Logging in cennetcs html form and this script - script will run
+    # ToDO - and login
+    # ToDO - 4. If Log In will be Succesfull - bot actions will be shown
+    # ToDO - and Bot will be waiting for action throught buttons
+    # ToDo - 4.b - If Not exit instagram
     login = "patrykgaweda1"
     passwd = "YouKnowNothingJonSnow"
 
