@@ -8,23 +8,21 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <span>Sample Button to send info</span>
-        <input type="button" name="execute" value="Send" onClick="location.href='{% url 'script'%}'">
-        </hr>
+        <button onClick="location.href='{% url 'script' %}'">Execute Script</button><hr />
         {% if data %}
-
         {{data | safe}}
-
         {% endif %}
 
-        <form action="/external" method="post">
+        <form action="/external/" method="post">
             {% csrf_token %}
-            Input text:
-                <input type="text" name="login" required>
-                {{data_external}}
-            </br>
-                <input type="submit" value="Submit">
+            Input Text:
+            <input type="text" name="login">
+            <input type="text" name="password">
+            {{data_external}}<br /> <br />
+            {{login_data}}
+            <br />
+            {{password_data}}
+            <input type="submit" value="Submit Data">
         </form>
-
     </body>
 </html>
