@@ -2,6 +2,7 @@ from Helpers.helper import *
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import sys
 
 
 class Main:
@@ -24,8 +25,9 @@ class Main:
     # ToDO - 4. If Log In will be Succesfull - bot actions will be shown
     # ToDO - and Bot will be waiting for action throught buttons
     # ToDo - 4.b - If Not exit instagram
-    login = "patrykgaweda1"
-    passwd = "YouKnowNothingJonSnow"
+    login = sys.argv[1]     #login = "patrykgaweda1"
+    passwd = sys.argv[2]    #passwd = "YouKnowNothingJonSnow"
+    print(f'Login: {login} | password: {passwd}')
 
     time.sleep(3)
     browser.find_element_by_name('password').send_keys(passwd)

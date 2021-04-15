@@ -14,7 +14,8 @@
     </div>
 
     <section class="panel-log">
-        <form action="instagram.py" method="get">
+        <form action="/send/" method="post">
+            {% csrf_token %}
             <div class="labels-log">
                 <input type="text" class="label" name="username"> Login
                 <br />
@@ -53,7 +54,7 @@
             <div class="functions">
                 <div id="left">
                     <p>
-                        Turn ALL:
+                        Turn All:
                     </p>
 
                     <p>
@@ -61,7 +62,7 @@
                     </p>
 
                     <p>
-                        LIKE:
+                        Like:
                     </p>
 
                     <p>

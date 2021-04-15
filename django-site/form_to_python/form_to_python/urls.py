@@ -19,7 +19,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.button),
-    path('output', views.output, name="script"),
-    path('external/', views.external)
+    path('', views.main),
+    path('send/', views.send_username_and_password)
 ]

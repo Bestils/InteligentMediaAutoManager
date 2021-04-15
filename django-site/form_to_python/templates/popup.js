@@ -69,10 +69,10 @@ $(document).ready(function(){
 $(document).ready(function(){
     $(".logButton").on({
         mouseenter: function(){
-            $(this).animate({ backgroundColor: "white", color: "black"});
+            $(this).animate({ backgroundColor: "gray", color: "white"});
         },
         mouseleave: function(){
-            $(this).animate({ backgroundColor: "transparent", color: "gray"});
+            $(this).animate({ backgroundColor: "white", color: "gray"});
         }
     });
 })
