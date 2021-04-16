@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>BOT</title>
-        <script src="jquery-3.6.0.min.js"></script>
-        <script src="jquery-ui.min.js"></script>
-        <script src="popup.js"></script>
+        <script src="jQuery/jquery-3.6.0.min.js"></script>
+        <script src="jQuery/jquery-ui.min.js"></script>
+        <script src="jQuery/popup.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -12,19 +12,6 @@
         <div id="botIco"></div>
         <h2>Bot Controller</h2>
     </div>
-
-    <section class="panel-log">
-        <form action="/send/" method="post">
-            {% csrf_token %}
-            <div class="labels-log">
-                <input type="text" class="label" name="username"> Login
-                <br />
-                <br />
-                <input type="text" class="label" name="password"> Password
-            </div>
-            <input type="submit" class="logButton" value="LOG IN">
-        </form>
-    </section>
 
     <section class="main">
         <div class="leftContent">

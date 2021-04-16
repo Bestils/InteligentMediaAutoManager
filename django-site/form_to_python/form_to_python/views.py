@@ -4,7 +4,7 @@ from subprocess import run, PIPE
 import sys
 
 def main(request):
-    return render(request, 'popup.html')
+    return render(request, 'home.html')
 
 def send_username_and_password(request):
     username = request.POST.get('username')
