@@ -18,7 +18,6 @@ class Main:
         browser.quit()
 
     # Finding LogIn Elem by Name
-    # ToDO - 1. Getting Login and password from Extension - HTML
     # ToDO - 2. Hide bot actions unless you are logged IN.
     # ToDO - 3. Logging in cennetcs html form and this script - script will run
     # ToDO - and login

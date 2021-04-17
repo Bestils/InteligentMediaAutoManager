@@ -1,3 +1,4 @@
+// Labels and log button Animations
 $(document).ready(function(){
     $(".logButton").on({
         mouseenter: function(){
@@ -27,6 +28,7 @@ $(document).ready(function(){
     });
 })
 
+// Show Password
 $(document).ready(function(){
  $(".checkbox").change(function(){
   if($(this).is(':checked')){

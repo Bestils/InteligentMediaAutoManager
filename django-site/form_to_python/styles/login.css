@@ -26,6 +26,7 @@ h2{
     background:#DCDCDC;
     border:none;
 }
+
 .logButton{
     margin-top:15px;
     text-align:center;
@@ -34,14 +35,17 @@ h2{
     background:green;
     border:none;
 }
+
 .checkbox{
     margin-top:10px;
     padding:5px 5px 5px 5px;
 }
+
 a:link, a:visited {
     text-decoration:none;
     color:green;
 }
+
 a:hover, a:active {
     color:black;
 }
