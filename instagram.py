@@ -45,5 +45,5 @@ class Main:
     find_by_CssSelector(browser, 'button.aOOlW:nth-child(2)')
 
     # Exit Browser after end session
-    time.sleep(10)
+    time.sleep(2)
     browser.quit()

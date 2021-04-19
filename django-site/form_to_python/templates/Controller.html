@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>BOT</title>
-        <script src="jQuery/jquery-3.6.0.min.js"></script>
-        <script src="jQuery/jquery-ui.min.js"></script>
-        <script src="jQuery/popup.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        {% load static %}
+        <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'jQuery/controller.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'controller.css' %}">
     </head>
     <body>
     <div id="header">

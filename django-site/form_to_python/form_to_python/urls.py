@@ -20,5 +20,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main),
-    path('send/', views.send_username_and_password)
+    path('Controller/', views.get_data)
 ]

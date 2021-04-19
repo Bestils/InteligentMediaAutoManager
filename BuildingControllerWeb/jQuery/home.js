@@ -6,7 +6,7 @@ $(document).ready(function(){
         },
         mouseleave: function(){
             $(this).animate({ backgroundColor: "green", color: "white"});
-        }
+        },
     });
 })
 
@@ -38,6 +38,5 @@ $(document).ready(function(){
   {
    $("#pass").attr("type","password");
   }
-
  });
 });

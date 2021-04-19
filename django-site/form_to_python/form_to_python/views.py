@@ -1,12 +1,14 @@
 from django.shortcuts import render
 import requests
 from subprocess import run, PIPE
+from django.http import HttpResponse
 import sys
 
 def main(request):
-    return render(request, 'home.html')
+    return render(request, 'Home.html')
 
-def send_username_and_password(request):
+def get_data(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     run([sys.executable, '//home//darek//GitHubRepositories//InteligentMediaAutoManager//instagram.py', username, password], shell=False, stdout=PIPE)
+    return render(request, 'Controller.html')

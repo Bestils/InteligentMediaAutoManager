@@ -97,15 +97,3 @@ $(document).ready(function(){
         }
     });
 })
-
-// Funcionality example
-
-$document.ready(function(){
-    $(".logButton").click(function(){
-		var login = $(":text").val();
-		var password = $(":password").val();
-        chrome.runtime.sendMessage({ asking: "login", function(response) {
-            sendToDjango(response.answer)}
-        }
-    });
-});

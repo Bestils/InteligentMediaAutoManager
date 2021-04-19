@@ -3,6 +3,14 @@
   "name": "Bot Extension",
   "version": "0.1",
   "description": "A Chrome Extension that shows actions of Bot who imitate human activities in Instagram.",
+  "permissions":
+          [
+            "http://127.0.0.1:8000/"
+          ],
+  "background": {
+    "persistent": false,
+    "scripts": "background.js"
+  },
   "icons": {
     "128": "Icons/icon128.png",
     "48": "Icons/icon48.png",
