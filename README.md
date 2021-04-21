@@ -1,8 +1,10 @@
 # InteligentMediaAutoManager using:
 
 - Python 3.8.5
+- Django 3.2
 - PyCharm IDE
-- JQuery 3.6.0 + JQuery UI 
+- HTML5 / CSS
+- JQuery 3.6.0 + JQuery UI
 
 Bibliography:
 
@@ -16,3 +18,11 @@ https://medium.com/swlh/introduction-to-selenium-create-a-web-bot-with-python-cd
      
 4. - JQuery Tut -
     https://www.w3schools.com/jquery/
+     
+5. - Django Session Docs - 
+    https://docs.djangoproject.com/en/2.2/topics/http/sessions/
+     
+6. - Django Code Rafactoring -
+    https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/
+     
+7. - Running External Python Script From Django App - https://www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3

@@ -8,15 +8,15 @@ $(document).ready(function(){
             $(this).animate({ backgroundColor: "green", color: "white"});
         },
     });
-})
+});
 
 $(document).ready(function(){
     $(".label").on({
         mouseenter : function(){
-            $(this).animate({backgroundColor: "white", color: "green"});
+            $(this).animate({ backgroundColor: "white", color: "green"});
         },
         mouseleave : function(){
-            $(this).animate({backgroundColor: "#DCDCDC", color: "green"});
+            $(this).animate({ backgroundColor: "#DCDCDC", color: "green"});
         },
         focus : function(){
             $(this).css({"background-color": "white", "color": "white", "outline": "none"});
@@ -26,7 +26,7 @@ $(document).ready(function(){
             $(this).css({"background-color": "#DCDCDC"});
         }
     });
-})
+});
 
 // Show Password
 $(document).ready(function(){

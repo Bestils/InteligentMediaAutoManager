@@ -2,18 +2,18 @@
 <html>
     <head>
         <title>BOT</title>
-        <script src="static/jQuery/jquery-3.6.0.min.js"></script>
-        <script src="static/jQuery/jquery-ui.min.js"></script>
-        <script src="static/jQuery/home.js"></script>
-        <link rel="stylesheet" type="text/css" href="static/login.css">
+        {% load static %}
+        <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'jQuery/login.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/Login.css' %}">
     </head>
     <body>
     <section id="main">
         <div id="header">
             <h2>Bot Logger</h2>
         </div>
-
-            <form action="/Controller/" method="post">
+            <form action="/Main/" method="post">
                 {% csrf_token %}
                     <input type="text" class="label" name="username" placeholder="USERNAME">
                     <br />

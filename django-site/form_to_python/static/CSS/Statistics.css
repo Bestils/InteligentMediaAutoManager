@@ -1,0 +1,14 @@
+.label{
+    color:white;
+    font-weight:bold;
+    background:black;
+    width:100%;
+    padding:10px 0px 10px 10px;
+    font-size:min(4vw, 25px);
+    margin-left:-5px;
+}
+
+#Content p{
+    font-family:Trebouch MS;
+    font-size:min(3vw, 18px);
+}

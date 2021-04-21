@@ -5,10 +5,10 @@ $(document).ready(function(){
     button[0].click(function(){
         if (dot[0].css('right') == '2px')
         {
-            dot[0].animate({right: "-25px"});
-            dot[1].animate({right: "-25px"});
-            dot[2].animate({right: "-25px"});
-            dot[3].animate({right: "-25px"});
+            dot[0].animate({right: "-40px"});
+            dot[1].animate({right: "-40px"});
+            dot[2].animate({right: "-40px"});
+            dot[3].animate({right: "-40px"});
             button[0].animate({backgroundColor: "#90EE90"}, "slow");
             button[1].animate({backgroundColor: "#90EE90"}, "slow");
             button[2].animate({backgroundColor: "#90EE90"}, "slow");
@@ -30,7 +30,7 @@ $(document).ready(function(){
     button[1].click(function(){
         if (dot[1].css('right') == '2px')
         {
-            dot[1].animate({right: "-25px"});
+            dot[1].animate({right: "-40px"});
             button[1].animate({backgroundColor: "#90EE90"}, "slow");
             // HERE SHOULD BE LOGIC - Follow
         }
@@ -45,7 +45,7 @@ $(document).ready(function(){
     button[2].click(function(){
         if (dot[2].css('right') == '2px')
         {
-            dot[2].animate({right: "-25px"});
+            dot[2].animate({right: "-40px"});
             button[2].animate({backgroundColor: "#90EE90"}, "slow");
             // HERE SHOULD BE LOGIC - Like
         }
@@ -60,7 +60,7 @@ $(document).ready(function(){
     button[3].click(function(){
         if (dot[3].css('right') == '2px')
         {
-            dot[3].animate({right: "-25px"});
+            dot[3].animate({right: "-40px"});
             button[3].animate({backgroundColor: "#90EE90"}, "slow");
             // HERE SHOULD BE LOGIC - Comment
         }
@@ -72,40 +72,3 @@ $(document).ready(function(){
         }
     })
 })
-
-// LOG Button Animation
-$(document).ready(function(){
-    $(".logButton").on({
-        mouseenter: function(){
-            $(this).animate({ backgroundColor: "gray", color: "white"});
-        },
-        mouseleave: function(){
-            $(this).animate({ backgroundColor: "white", color: "gray"});
-        }
-    });
-})
-
-// LABEL ANIMATIONS
-$(document).ready(function(){
-    $(".label").on({
-        focus : function(){
-            $(this).css({"border-color": "#FFEFD5", "background-color": "#EEE8AA"});
-        },
-
-        blur : function(){
-            $(this).css({"border-color": "white", "background-color": "white"});
-        }
-    });
-})
-
-// Funcionality example
-
-$document.ready(function(){
-    $(".logButton").click(function(){
-		var login = $(":text").val();
-		var password = $(":password").val();
-        chrome.runtime.sendMessage({ asking: "login", function(response) {
-            sendToDjango(response.answer)}
-        }
-    });
-});
