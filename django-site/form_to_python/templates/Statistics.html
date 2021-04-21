@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOT</title>
+    {% load static %}
+    <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'jQuery/main.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Statistics.css' %}">
+</head>
+<body>
+
+<div id="Welcome">
+    <div id="icon"></div>
+    <div id="title">BOT CONTROLLER</div>
+    <br />
+    <br />
+    <h3>
+        WELCOME <strong>{{login}}</strong>!
+    </h3>
+</div>
+
+<div id="Main">
+    <div id="Menu">
+        <a href="{% url 'Main' %}">
+            Main
+        </a>
+        <br/>
+
+        <a href="{% url 'Statistics' %}">
+            Statistics
+        </a>
+        <br/>
+
+        <a href="{% url 'Functions' %}">
+            Functions
+        </a>
+        <br/>
+
+        <a href="">
+            Exit
+        </a>
+    </div>
+
+    <div id="Content">
+        <h2>Statistics</h2>
+        <hr/>
+
+        <p>
+            <strong>Followers</strong><br />
+            Amount of people that follows our account.
+            <br/>
+        <div class="label">
+            0
+        </div>
+
+        </p>
+
+        <p>
+            <strong>Follows</strong><br />
+            Amount of people that we follow.
+            <br/>
+            <div class="label">
+                0
+            </div>
+        </p>
+    </div>
+</div>
+</div>
+</body>
+</html>

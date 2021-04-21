@@ -19,7 +19,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.button),
-    path('output', views.output, name="script"),
-    path('extrenal', views.external)
+    path('', views.main),
+    path('Main/', views.get_data),
+    path('Start/', views.main_page, name="Main"),
+    path('Functions/', views.functions, name = "Functions"),
+    path('Statistics/', views.statistics, name = "Statistics"),
+    path('Exit/', views.exit, name="Exit")
 ]

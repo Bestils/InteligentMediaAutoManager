@@ -2,6 +2,7 @@ from Helpers.helper import *
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import sys
 
 
 class Main:
@@ -17,8 +18,15 @@ class Main:
         browser.quit()
 
     # Finding LogIn Elem by Name
-    login = "patrykgaweda1"
-    passwd = "YouKnowNothingJonSnow"
+    # ToDO - 2. Hide bot actions unless you are logged IN.
+    # ToDO - 3. Logging in cennetcs html form and this script - script will run
+    # ToDO - and login
+    # ToDO - 4. If Log In will be Succesfull - bot actions will be shown
+    # ToDO - and Bot will be waiting for action throught buttons
+    # ToDo - 4.b - If Not exit instagram
+    login = sys.argv[1]     #login = "patrykgaweda1"
+    passwd = sys.argv[2]    #passwd = "YouKnowNothingJonSnow"
+    print(f'Login: {login} | password: {passwd}')
 
     time.sleep(3)
     browser.find_element_by_name('password').send_keys(passwd)
@@ -37,5 +45,5 @@ class Main:
     find_by_CssSelector(browser, 'button.aOOlW:nth-child(2)')
 
     # Exit Browser after end session
-    time.sleep(10)
+    time.sleep(2)
     browser.quit()

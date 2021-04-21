@@ -1,0 +1,44 @@
+#turnAll, #Follow, #Like, #Comment{
+        background-color:white;
+        position:relative;
+        left:25px;
+        width:60px;
+        height:18px;
+        border:2px solid green;
+        border-radius:25px;
+    }
+
+#dot1, #dot2, #dot3, #dot4{
+        position:relative;
+        background-color:white;
+        bottom:3px;
+        right:2px;
+        width:20px;
+        height:20px;
+        border:2px solid green;
+        border-radius:20px;
+    }
+
+
+#right, #left{
+    float:left;
+    display:inline;
+    position:relative;
+    bottom:12px;
+}
+
+#left{
+    width:64%;
+    padding:20px 0px 20px 0px;
+}
+#left strong{
+    font-size:20px;
+}
+#right{
+    width:35%;
+    left:10%;
+}
+
+#right p{
+    margin-top:47px;
+}
