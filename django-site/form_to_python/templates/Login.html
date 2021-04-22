@@ -11,10 +11,11 @@
     <body>
     <section id="main">
         <div id="header">
-            <h2>Bot Logger</h2>
+            <h2>Bot Logger{{alert}}</h2>
         </div>
             <form action="/Main/" method="post">
                 {% csrf_token %}
+
                     <input type="text" class="label" name="username" placeholder="USERNAME">
                     <br />
                     <br />

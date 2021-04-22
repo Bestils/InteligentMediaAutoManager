@@ -17,13 +17,14 @@
     <br />
     <br />
     <h3>
-        WELCOME <strong>{{login}}</strong>!
+        {{ alert }}
+        WELCOME <strong>{{ login }}</strong>!
     </h3>
 </div>
 
 <div id="Main">
     <div id="Menu">
-        <a href="{% url 'Main' %}">
+        <a href="{% url 'Start' %}">
             Main
         </a>
         <br/>
@@ -38,7 +39,7 @@
         </a>
         <br/>
 
-        <a href="{% url 'Exit' %}">
+        <a href="">
             Exit
         </a>
     </div>
