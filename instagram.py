@@ -1,14 +1,68 @@
+from webdriver_manager.firefox import GeckoDriverManager
+
 from Helpers.helper import *
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-import sys
-import requests
+from selenium import webdriver
+from time import sleep
+import random
 
+def folowByLocation(session,location):
+    session.follow_by_locations(['224442573/salton-sea/'], amount=100)
 
+def folowByTags(session, tagList):
+    session.follow_by_tag(tagList, amount=100)
+
+browser = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 class Main:
-    # Browser Init
-    browser = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+
+    comments = [' I am a robotttt', 'Nice ', 'loool very nice! ', 'I like it!', 'Super ;) ', 'hmmm, interesting ',
+                ' hi', 'I am a sheep ', 'learn something new ', 'Mind blowing ', 'I like to eat wires', ]
+
+    # This are some variables to keep tracking of the posts
+    posts = 0
+
+    def likeAndComm(browser,comments):  # Likes and Comments the first 9 posts
+        global posts
+        for y in range(1, 4):
+            for x in range(1, 4):
+                post = browser.find_element_by_xpath(
+                    '/html/body/div[1]/section/main/div/div[1]/div/div[' + str(y) + ']/div[' + str(x) + ']')
+                browser.implicitly_wait(1)
+                post.click()
+                sleep(2)
+                postLike = browser.find_element_by_xpath(
+                    '/html/body/div[5]/div[2]/div/article/div[3]/section[1]/span[1]/button/div').click()
+                # postLike.click()
+                sleep(2)
+                # comment = browser.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/div[3]/section[3]/div/form').click()
+                print("click1")
+                sleep(3)
+                comment = browser.find_element_by_xpath(
+                    '/html/body/div[4]/div[2]/div/article/div[3]/section[3]/div/form').click()
+                print("click2")
+                comment = browser.find_element_by_xpath(
+                    '/html/body/div[4]/div[2]/div/article/div[3]/section[3]/div/form/textarea').send_keys(
+                    random.choice(comments))
+                print("send1")
+                sleep(3)
+                sendComment = browser.find_element_by_xpath(
+                    '/html/body/div[4]/div[2]/div/article/div[3]/section[3]/div/form/button')
+                sendComment.click()
+                print("click3")
+                sleep(4)
+                posts += 1
+                closePost = browser.find_element_by_xpath('/html/body/div[4]/div[3]/button/div')
+                closePost.click()
+                sleep(3)
+            print('Nr. of posts: ' + str(posts))
+
+        sleep(5)
+        browser.get('https://www.instagram.com/explore/')
+        sleep(6)
+
+
     #   Opening WebSite
     browser.get('https://www.instagram.com/')
 
@@ -44,13 +98,9 @@ class Main:
     # Turn Off Notifications
     time.sleep(2)
     find_by_CssSelector(browser, 'button.aOOlW:nth-child(2)')
-
-    # Making session for communication with django
-    session = requests.session()
-    url = 'http://127.0.0.1:8000/'
-    data = {'alert':'Wygrales zycie'}
-
-    session.post(url, data = data)
+    browser.get('https://www.instagram.com/explore/')
+    sleep(6)
+    likeAndComm(browser,comments)
     # Exit Browser after end session
-    # time.sleep(2)
-    # browser.quit()
+    time.sleep(10)
+    browser.quit()

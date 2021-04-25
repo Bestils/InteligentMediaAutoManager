@@ -6,30 +6,30 @@ from django.http import HttpResponse
 import sys
 import time
 from signal import signal, SIGINT
-
+context = {}
 def main(request):
-    context={}
+    context['alert'] = "alert"
+    request.POST.add("")
     if request.method == 'POST':
-        alert = request.POST.get('alert')
-        request.session['alert'] = alert
-        print(request.session['alert'])
-        print(alert)
+        alert = "request.POST.get('alert')"
         context['alert'] = alert
         return render(request, 'Login.html', context)
     return render(request, 'Login.html')
 
 def get_data(request):
-    context = {}
+
+    print( "this is request in get_data")
+    print(request.session)
+
     username = request.POST.get('username')
     password = request.POST.get('password')
 
     run([sys.executable, '//home//darek//GitHubRepositories//InteligentMediaAutoManager//django-site//form_to_python//test.py', username, password], shell=False, stdout=PIPE)
     context['login'] = username
     request.session['log'] = username
-    alert = request.session['alert']
-    print(alert)
-    context['alert'] = alert
-    alert = request.session.get('alert')
+
+    alert =context['alert']
+
     return render(request, 'Main.html', context)
 
 def main_page(request):
