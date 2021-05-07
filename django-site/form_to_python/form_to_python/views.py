@@ -6,10 +6,10 @@ from django.http import HttpResponse
 import sys
 import time
 from signal import signal, SIGINT
+
 context = {}
 def main(request):
     context['alert'] = "alert"
-    request.POST.add("")
     if request.method == 'POST':
         alert = "request.POST.get('alert')"
         context['alert'] = alert

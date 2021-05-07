@@ -5,6 +5,13 @@
 - PyCharm IDE
 - HTML5 / CSS
 - JQuery 3.6.0 + JQuery UI
+- MongoDb
+
+##commands need to run code 
+` pip install selenium`
+` pip install instaPy`
+` pip install webdriver-manager`
+` pip install pymongo`
 
 Bibliography:
 
