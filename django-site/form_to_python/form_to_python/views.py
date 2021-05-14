@@ -20,13 +20,10 @@ def main(request):
 
 
 def get_data(request):
-    print( "this is request in get_data")
-    print(request.session)
-
     username = request.POST.get('username')
     password = request.POST.get('password')
 
-    run([sys.executable, '//home//darek//GitHubRepositories//InteligentMediaAutoManager//django-site//form_to_python//test.py', username, password], shell=False, stdout=PIPE)
+    run([sys.executable, '//home//darek//GitHubRepositories//InteligentMediaAutoManager//instagram//main.py', username, password], shell=False, stdout=PIPE)
     context['login'] = username
     request.session['log'] = username
 
@@ -53,11 +50,3 @@ def statistics(request):
     context = {}
     context['login'] = login
     return render(request, 'Statistics.html', context)
-
-
-def exit(request):
-    return signal(SIGINT, handler)
-
-
-def handler(signal_received, frame):
-    exit(0)
