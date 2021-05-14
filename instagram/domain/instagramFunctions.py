@@ -1,6 +1,5 @@
 from enum import Enum
 
-
 class InstagramFunctions:
     def folowByLocation(session, location):
         session.follow_by_locations(location, amount=100)
