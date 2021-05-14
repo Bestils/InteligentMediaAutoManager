@@ -17,6 +17,7 @@ class InstagramInstance:
                           password=password,
                           headless_browser=headless)
         self.session = session  # instance variable unique to each instance
+        self.session.login()
 
     def configureSession(session, maxFollowers, minFollowers, maxFollowing, minFollowing):
         session.set_relationship_bounds(enabled=True,
