@@ -11,20 +11,26 @@
     <body>
     <section id="main">
         <div id="header">
-            <h2>Bot Logger</h2>
+            <h2>Bot Logger{{alert}}</h2>
         </div>
-            <form action="/Main/" method="post">
+            <form action="/Main/" method="post" id="log_from">
                 {% csrf_token %}
-                    <input type="text" class="label" name="username" placeholder="USERNAME">
+
+                    <input type="text" class="label" id="login" name="username" placeholder="USERNAME" minlength="3" required>
                     <br />
                     <br />
-                    <input type="password" class="label" id="pass" name="password" placeholder="PASSWORD">
+                    <input type="password" class="label" id="pass" name="password" placeholder="PASSWORD" minlength="5" required>
                     <input type="checkbox" class="checkbox"> Show Password
                     <input type="submit" class="logButton" value="LOGIN">
                     <p>
                         Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/">Create an Account</a>
                     </p>
             </form>
+
+            <div>
+                <h3 id="loginerror"></h3>
+                <h3 id="passerror"></h3>
+            </div>
     </section>
     </body>
 </html>

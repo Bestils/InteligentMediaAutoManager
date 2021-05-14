@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main),
-    path('Main/', views.get_data),
-    path('Start/', views.main_page, name="Main"),
+    path('', csrf_exempt(views.main)),
+    path('Main/', csrf_exempt(views.get_data)),
+    path('Start/', views.main_page, name = "Start"),
     path('Functions/', views.functions, name = "Functions"),
-    path('Statistics/', views.statistics, name = "Statistics"),
-    path('Exit/', views.exit, name="Exit")
+    path('Statistics/', views.statistics, name = "Statistics")
 ]

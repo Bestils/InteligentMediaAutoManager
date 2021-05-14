@@ -3,6 +3,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 import sys
+import requests
 
 
 class Main:
@@ -44,6 +45,12 @@ class Main:
     time.sleep(2)
     find_by_CssSelector(browser, 'button.aOOlW:nth-child(2)')
 
+    # Making session for communication with django
+    session = requests.session()
+    url = 'http://127.0.0.1:8000/'
+    data = {'alert':'Wygrales zycie'}
+
+    session.post(url, data = data)
     # Exit Browser after end session
-    time.sleep(2)
-    browser.quit()
+    # time.sleep(2)
+    # browser.quit()
