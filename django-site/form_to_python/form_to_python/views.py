@@ -6,14 +6,14 @@ from django.http import HttpResponse
 import sys
 import time
 from signal import signal, SIGINT
+from .helpers.helper import *
 
 context = {}
-
 
 def main(request):
     context['alert'] = "alert"
     if request.method == 'POST':
-        alert = "request.POST.get('alert')"
+        alert = request.POST.get('alert')
         context['alert'] = alert
         return render(request, 'Login.html', context)
     return render(request, 'Login.html')
@@ -32,21 +32,12 @@ def get_data(request):
 
 
 def main_page(request):
-    login = request.session.get('log')
-    context = {}
-    context['login'] = login
-    return render(request, 'Main.html', context)
+    return get_login(request, 'Main.html')
 
 
 def functions(request):
-    login = request.session.get('log')
-    context = {}
-    context['login'] = login
-    return render(request, 'Functions.html', context)
+    return get_login(request, 'Functions.html')
 
 
 def statistics(request):
-    login = request.session.get('log')
-    context = {}
-    context['login'] = login
-    return render(request, 'Statistics.html', context)
+    return get_login(request, 'Statistics.html')

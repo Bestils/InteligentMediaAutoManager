@@ -12,7 +12,7 @@ class Main:
     session = requests.session()
     url = 'http://127.0.0.1:8000/'
     data = {}
-    data['alert'] = 'Wygrales zycie'
+    data['odp'] = 'Wygrales zycie'
 
     session.post(url, data = data)
     # Exit Browser after end session
