@@ -22,8 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', csrf_exempt(views.main)),
     path('Main/', csrf_exempt(views.get_data)),
-    path('Start/', views.main_page, name = "Start"),
-    path('Functions/', views.functions, name = "Functions"),
-    path('Statistics/', views.statistics, name = "Statistics"),
-    path('like/', views.like_photos_by_tags, name = "likePhotosByTags")
+    path('Start/', views.main_page, name ="Start"),
+    path('Functions/', views.functions, name ="Functions"),
+    path('Statistics/', views.statistics, name ="Statistics"),
+    path('like/', views.like_photos_by_tags, name ="likePhotosByTags")
 ]
