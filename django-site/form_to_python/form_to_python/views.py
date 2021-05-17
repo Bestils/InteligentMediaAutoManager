@@ -1,5 +1,11 @@
+from django.shortcuts import render
+import requests
+from django.views.decorators.csrf import csrf_exempt
 from subprocess import run, PIPE
+from django.http import HttpResponse
 import sys
+import time
+from signal import signal, SIGINT
 from .helpers.helper import *
 from multiprocessing.connection import Client
 address = ('localhost', 6000)
