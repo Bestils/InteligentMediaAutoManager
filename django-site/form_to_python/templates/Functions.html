@@ -50,53 +50,14 @@
             <hr />
             <div class="functions">
                 <div id="left">
-                    <p>
-                        <strong>Turn All</strong><br />
-                        Turns all functions at once.
-                    </p>
-
-                    <p>
-                        <strong>Follow</strong><br />
-                        Sets Bot to find and follow random people.
-                    </p>
-
-                    <p>
-                        <strong>Like</strong><br />
-                        Sets Bot to find and like pictures of random people.
-                    </p>
-
-                    <p>
-                        <strong>Comment</strong><br />
-                        Sets Bot to find and comment pictures of random people.
-                    </p>
+                    <form action="/like/" method="post">
+                        <strong>Like Photos By Tags</strong><br />
+                        <input type="text" placeholder="tag1 tag2 tag3" id="tag">
+                        <input type="text" placeholder="Probability in % ex.: 20" id="probability">
+                        <input type="Submit" value="TURN">
+                    </form>
                 </div>
-
-                <div id="right">
-                    <p>
-                    <div id="turnAll">
-                        <div id="dot1"></div>
-                    </div>
-                    </p>
-
-                    <p>
-                    <div id="Follow">
-                        <div id="dot2"></div>
-                    </div>
-                    </p>
-
-                    <p>
-                    <div id="Like">
-                        <div id="dot3"></div>
-                    </div>
-                    </p>
-
-                    <p>
-                    <div id="Comment">
-                        <div id="dot4"></div>
-                    </div>
-                    </p>
-                </div>
-    </div>
+            </div>
     </div>
 </div>
 </body>
