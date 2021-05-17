@@ -7,11 +7,9 @@ from time import sleep
 import random
 # imports
 from instapy import smart_run
-
+from instagram.domain.instagramFunctions import InstagramFunctions
 
 class InstagramInstance:
-
-
     def configureSession(session, maxFollowers, minFollowers, maxFollowing, minFollowing):
         session.set_relationship_bounds(enabled=True,
                                         max_followers=maxFollowers,

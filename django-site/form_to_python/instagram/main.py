@@ -3,6 +3,10 @@ from instapy import InstaPy
 from instapy import smart_run
 import requests
 import sys
+from multiprocessing.connection import Listener
+
+address = ('localhost', 6000)
+listener = Listener(address)
 
 
 class Main:
@@ -17,7 +21,5 @@ class Main:
                       password=passwd,
                       headless_browser=False)
     data['alert'] = 'Wygrales zycie'
-    answer.post(url, data=data)
-    with smart_run(session):
-        # actions of the controller
-        session.like_by_tags(["car"], amount=10)
+    session.login()
+    InstagramInstance.likePhotosByTags(session, ['car', 'mercedes'], 25)
