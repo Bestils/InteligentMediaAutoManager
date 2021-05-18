@@ -1,19 +1,15 @@
 from django.shortcuts import render
-import requests
-from django.views.decorators.csrf import csrf_exempt
-from subprocess import run, PIPE
 from django.http import HttpResponse
-import sys
-import time
-from signal import signal, SIGINT
-
 from instapy import InstaPy
-
+from instagram.external.instagramInstance import InstagramInstance
 from .helpers.helper import *
-from multiprocessing.connection import Client
-address = ('localhost', 6000)
 
+session = InstaPy(username='patrykgaweda1',
+                  password='YouKnowNothingJonSnow',
+                  headless_browser=False)
+# GLOBAL ONLY FOR TEST FUNCTIONS
 context = {}
+
 
 def main(request):
     context['alert'] = "alert"
@@ -28,15 +24,8 @@ def get_data(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
 
-    session = InstaPy(username=username,
-                      password=password,
-                      headless_browser=False)
     session.login()
-
     context['login'] = username
-    request.session['log'] = username
-
-    alert =context['alert']
     return render(request, 'Main.html', context)
 
 
@@ -51,19 +40,29 @@ def functions(request):
 def statistics(request):
     return get_login(request, 'Statistics.html')
 
+
 # przygotuje ci do końca te zapisy i odczyty do bazy i niech te funkcje typu like by tag będą robione na bazie zapisanych w bazie danych tagów
-    # to by bylo typowo pod one tag
-def like_photos_by_tags(request): # MULTIPROCESSING
-    connection = Client(address)
-    action = 'like_photos_by_tags'
-   # InstagramInstance.likePhotosByTags(session,tagFromREquest , 25) # tak mniej więcej to ma wyglądać
+# to by bylo typowo pod one tag
+def like_photos_by_tags(request):
+    data = getTagAndProb(request)
+    InstagramInstance.likePhotosByTags(session, data[0], data[1])
 
-    # coś mi importy nie działają a jestem off time , postaraj się to porpawić pls jak coś zajme się tym jutro po 20
+def like_videos_by_tags(request):
+    data = getTagAndProb(request)
+    InstagramInstance.likeVideosByTags(session, data[0], data[1])
+
+def follow_by_location(request):
+    location = request.POST.get('location')
+    InstagramInstance.likeVideosByTags(session, location)
+
+def follow_by_tags(request):
     tag = request.POST.get('tag')
-    #tags_arr = tags.split(' ') # ['tag1', 'tag2', 'tag3']
-    probability = request.POST.get('probability')
-    connection.send(action, tag, probability)
-    connection.close()
+    InstagramInstance.followByTags(session, tag)
 
+def unfollow_non_followers(request):
+    data = getAmountAndDelay(request)
+    InstagramInstance.unfollowNonFollowers(session, data[0], data[1])
 
-
+def unfollow_new_followers(request):
+    data = getAmountAndDelay(request)
+    InstagramInstance.unfollowNewFollowers(session, data[0], data[1])

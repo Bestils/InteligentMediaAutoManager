@@ -51,9 +51,10 @@
             <div class="functions">
                 <div id="left">
                     <form action="/like/" method="post">
+                        {% csrf_token %}
                         <strong>Like Photos By Tags</strong><br />
-                        <input type="text" placeholder="tag1 tag2 tag3" id="tag">
-                        <input type="text" placeholder="Probability in % ex.: 20" id="probability">
+                        <input type="text" placeholder="tag1 tag2 tag3" name="tag">
+                        <input type="text" placeholder="Probability in % ex.: 20" name="probability">
                         <input type="Submit" value="TURN">
                     </form>
                 </div>
