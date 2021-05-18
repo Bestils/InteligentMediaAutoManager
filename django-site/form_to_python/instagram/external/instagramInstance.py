@@ -8,6 +8,7 @@ import random
 # imports
 from instapy import smart_run
 from instagram.domain.instagramFunctions import InstagramFunctions
+from instapy import InstaPy
 
 class InstagramInstance:
     def configureSession(session, maxFollowers, minFollowers, maxFollowing, minFollowing):
@@ -18,10 +19,10 @@ class InstagramInstance:
                                         min_following=minFollowing)
 
     # Follow activity
-    def folowByLocation(self, location):
+    def followByLocation(self, location):
         InstagramFunctions.folowByLocation(self.session, location, 100)
 
-    def folowByTags(self, tagList):
+    def followByTags(self, tagList):
         InstagramFunctions.folowByTags(self.session, tagList, 100)
 
     # Like activity

@@ -1,10 +1,10 @@
 from enum import Enum
 
 class InstagramFunctions:
-    def folowByLocation(session, location):
+    def followByLocation(session, location):
         session.follow_by_locations(location, amount=100)
 
-    def folowByTags(session, tagList):
+    def followByTags(session, tagList):
         session.follow_by_tag(tagList, amount=100)
 
     def likePhotosByTags(session, tagList, probability):
