@@ -44,6 +44,9 @@ def main_page(request):
     return get_login(request, 'Main.html')
 
 
+def dataBase(request):
+    return get_login(request, 'Db.html')
+
 def functions(request):
     return get_login(request, 'Functions.html')
 
