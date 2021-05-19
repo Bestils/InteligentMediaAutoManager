@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from instapy import InstaPy, smart_run
-from instagram.external.instagramInstance import InstagramInstance
+from django.contrib.sessions.models import Session
 from .helpers.helper import *
 
 
@@ -17,7 +17,8 @@ def botSettings(request):
                       headless_browser=False)
     with smart_run(session):
         set_settings(session, settings)
-    return HttpResponse("Done")
+        session.end()
+    return redirect('/Exit/')
 
 
 def statistics(request):
@@ -25,6 +26,7 @@ def statistics(request):
 
 
 def exit(request):
+    # clear django session
     kill_browser()
     kill_server()
     return HttpResponse("Bot has been KILLED")

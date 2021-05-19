@@ -7,13 +7,13 @@
     <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
     <script src="{% static 'jQuery/Start.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Start.css' %}">
 </head>
 <body>
 
 <div id="Welcome">
     <div id="icon"></div>
-    <div id="title">BOT CONTROLLER</div>
+    <div id="title">Intelligent Media Auto Manager</div>
     <br/>
     <br/>
 </div>
@@ -27,52 +27,61 @@
 
     <div id="Content">
         <h2>Settings</h2>
-        <hr/>
-        <div class="functions">
-            <div id="left">
-                <form action="/Main/" method="post">
-                    {% csrf_token %}
+        <form action="/Main/" method="post">
+            {% csrf_token %}
 
-                    <div id="log_form">
-                        <input type="text" class="label" id="login" name="username" placeholder="USERNAME" minlength="3"
-                               required>
-                        <br/>
-                        <br/>
-                        <input type="password" class="label" id="pass" name="password" placeholder="PASSWORD"
-                               minlength="5" required>
-                        <input type="checkbox" class="checkbox"> Show Password
-                        <p>
-                            Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/">Create an
-                            Account</a>
-                        </p>
-                    </div>
+            <div id="login_form">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="username" placeholder="Login" minlength="3" required>
 
-                    <strong>Like Photos By Tags</strong><br/>
-                    <input type="text" placeholder="Tags" name="photo_tags">
-                    <input type="text" placeholder="Probability" name="like_photo_probability">
-                    <br/>
-                    <strong>Like Videos By Tags</strong><br/>
-                    <input type="text" placeholder="Tags" name="video_tag">
-                    <input type="text" placeholder="Probability" name="like_video_probability">
-                    <br/>
-                    <strong>Follow By Location</strong><br/>
-                    <input type="text" placeholder="Location" name="location">
-                    <br/>
-                    <strong>Follow By Tags</strong><br/>
-                    <input type="text" placeholder="Tags" name="follow_tags">
-                    <br/>
-                    <strong>Unfollow Non Followers</strong><br/>
-                    <input type="text" placeholder="Amount" name="non_followers_amount">
-                    <input type="text" placeholder="Delay" name="non_followers_delay">
-                    <br/>
-                    <strong>Unfollow New Followers</strong><br/>
-                    <input type="text" placeholder="Amount" name="new_followers_amount">
-                    <input type="text" placeholder="Delay" name="new_followers_delay">
-                    <br/>
-                    <input type="Submit" value="Launch">
-                </form>
+                <label for="pass">Password</label>
+                <input type="password" id="pass" name="password" placeholder="Password" minlength="5" required>
             </div>
-        </div>
+
+            <div id="show_password">
+                <label for="check">Show Password</label>
+                <input type="checkbox" class="checkbox" id="check">
+            </div>
+            <p>
+                Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/">Create an Account</a>
+            </p>
+
+            <h3><strong>LIKE</strong> Photos By Tags</h3>
+            <hr/>
+            <input type="text" placeholder="Tags" name="photo_tags">
+            <input type="text" placeholder="Probability" name="like_photo_probability">
+            <br/>
+
+            <h3><strong>LIKE</strong> Videos By Tags</h3>
+            <hr/>
+            <input type="text" placeholder="Tags" name="video_tag">
+            <input type="text" placeholder="Probability" name="like_video_probability">
+            <br/>
+
+            <h3><strong>FOLLOW</strong> By Location</h3>
+            <hr/>
+            <input type="text" placeholder="Location" name="location">
+            <br/>
+
+            <h3><strong>FOLLOW</strong> By Tags</h3>
+            <hr/>
+            <input type="text" placeholder="Tags" name="follow_tags">
+            <br/>
+
+            <h3><strong>UNFOLLOW</strong> Non Followers</h3>
+            <hr />
+            <input type="text" placeholder="Amount" name="non_followers_amount">
+            <input type="text" placeholder="Delay" name="non_followers_delay">
+            <br/>
+
+            <h3><strong>UNFOLLOW</strong> New Followers</h3>
+            <hr />
+            <input type="text" placeholder="Amount" name="new_followers_amount">
+            <input type="text" placeholder="Delay" name="new_followers_delay">
+            <br/>
+
+            <input type="Submit" value="Launch" id="launch">
+        </form>
     </div>
 </div>
 </body>
