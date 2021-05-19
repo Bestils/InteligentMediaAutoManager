@@ -15,7 +15,4 @@ class Mongo:
 
     def updateComment(self, userName, comment):
         self.db.things.updateOne({'userName': userName}, {'$set': {"comment": comment}})
-## Do darusia <3
-# ogólnie wpadłem na fajny pomysł trzymania konfiguracji w mongo. Mongo jest super ez z tego co czytałem. To jest NoSql. Wpierdalasz w chuj danych, dajesz id i wyciągasz je tak samo.
-# to powinoo już dopiąć wymagania i wgl technologie do tego licencjatu
-# narazie tam trzymam komentarze dla ludzi
+
