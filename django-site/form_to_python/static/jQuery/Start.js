@@ -1,14 +1,4 @@
-// Labels and log button Animations
-$(document).ready(function(){
-    $(".logButton").on({
-        mouseenter: function(){
-            $(this).animate({ backgroundColor: "gray", color: "white"});
-        },
-        mouseleave: function(){
-            $(this).animate({ backgroundColor: "green", color: "white"});
-        },
-    });
-});
+// Labels Animations
 
 $(document).ready(function(){
     $(".label").on({
@@ -41,4 +31,18 @@ $(document).ready(function(){
  });
 });
 
-// LOGIN AUTHENTICATION
+// References
+
+$(document).ready(function(){
+    $("a").on({
+        mouseenter : function(){
+            $(this).animate({backgroundColor: "gray", color: "black"});
+        },
+        mouseleave : function(){
+            $(this).animate({backgroundColor: "black", color: "white"});
+        },
+        click : function(){
+            $(this).css({"color": "lightgreen", "background-color": "gray"});
+        }
+    });
+})
