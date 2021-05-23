@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from instagram.external.instagramInstance import InstagramInstance
 import subprocess
 import signal
 import os
+
+from instagram.external.instagramInstance import InstagramInstance
+
 
 def get_login(request, page_url):
     login = request.session.get('log')

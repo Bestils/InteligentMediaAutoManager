@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', csrf_exempt(views.main)),
     path('Main/', csrf_exempt(views.botSettings)),
-    path('Statistics/', views.statistics, name = "Statistics"),
-    path('Exit/', views.exit, name = "Exit")
+    path('Statistics/', views.statistics, name ="Statistics"),
+    path('Exit/', views.exit, name ="Exit")
 ]
