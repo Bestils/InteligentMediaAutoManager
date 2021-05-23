@@ -6,7 +6,7 @@
     {% load static %}
     <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'jQuery/main.js' %}"></script>
+    <script src="{% static 'jQuery/Start.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/Main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/Statistics.css' %}">
 </head>
@@ -17,9 +17,6 @@
     <div id="title">BOT CONTROLLER</div>
     <br />
     <br />
-    <h3>
-        WELCOME <strong>{{login}}</strong>!
-    </h3>
 </div>
 
 <div id="Main">
@@ -39,7 +36,7 @@
         </a>
         <br/>
 
-        <a href="">
+        <a href="{% url 'Exit' %}">
             Exit
         </a>
     </div>
