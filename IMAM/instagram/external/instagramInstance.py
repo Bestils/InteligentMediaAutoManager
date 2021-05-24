@@ -1,14 +1,6 @@
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-import time
-from selenium import webdriver
-from time import sleep
-import random
 # imports
-from instapy import smart_run
-from instagram.domain.instagramFunctions import InstagramFunctions
-from instapy import InstaPy
+from IMAM.instagram.domain.instagramFunctions import InstagramFunctions
+
 
 class InstagramInstance:
     def configureSession(session, maxFollowers, minFollowers, maxFollowing, minFollowing):

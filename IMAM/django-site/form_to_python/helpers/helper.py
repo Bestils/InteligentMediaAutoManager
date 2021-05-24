@@ -3,7 +3,7 @@ import subprocess
 import signal
 import os
 
-from instagram.external.instagramInstance import InstagramInstance
+from IMAM.instagram import InstagramInstance
 
 
 def get_login(request, page_url):
