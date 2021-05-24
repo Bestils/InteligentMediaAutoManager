@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from instapy import InstaPy, smart_run
-from django.contrib.sessions.models import Session
 from .helpers.helper import *
 
 
@@ -24,6 +23,8 @@ def botSettings(request):
 def statistics(request):
     return get_login(request, 'Statistics.html')
 
+def dataBase(request):
+    return get_login(request, 'Db.html')
 
 def exit(request):
     # clear django session

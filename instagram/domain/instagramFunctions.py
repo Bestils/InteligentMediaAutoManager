@@ -52,7 +52,7 @@ class InstagramFunctions:
 # 'heavy' modes respectively.
 # Note: Liking, following or any other kind of engagements doesn't follow these modes.
 
-class podstMode(Enum):
+class mode(Enum):
     noComment = 'no_comment'
     heavy = 'heavy'
     light = 'light'
