@@ -2,12 +2,13 @@ from enum import Enum
 
 class InstagramFunctions:
     def followByLocation(session, location):
+        print("INSTAGRAM FUNCTIONS - LOCATION")
         if (location != ''):
             session.follow_by_locations(location, amount=100)
 
     def followByTags(session, tagList):
         if (tagList != ''):
-            session.follow_by_tag(tagList, amount=100)
+            session.follow_by_tags(tagList, amount=100)
 
     def likePhotosByTags(session, tagList, probability):
         # Like posts based on hashtags and like 3 posts of its poster

@@ -144,5 +144,11 @@ a:link{
         margin-bottom:5px;
     }
 
+    #Content .error{
+        color:red;
+        font-weight:bold;
+        font-size:min(3vw, 18px);
+    }
+
 
 
