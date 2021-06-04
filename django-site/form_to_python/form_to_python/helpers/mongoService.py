@@ -28,6 +28,8 @@ class MongoClientService:
     def readAll(self):
        return self.db.find()
 
+    def addComment(self,id, comment): # need for adding comments
+        self.db.insert_one({'id' : id, 'comment' : comment})
 
     def updateComment(self, id, comment):
         self.db.updateOne({'id': id}, {'$set': {'comment': comment}})

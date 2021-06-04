@@ -41,3 +41,18 @@ def exit(request):
     helper.information()
     helper.kill_server()
     return HttpResponse("Bot has been KILLED")
+
+def comments(request):
+    return render(request, 'CommentSet.html')
+
+def add_comment_record(request):
+    comment = helper.set_comments(request)
+    return render(request, 'CommentSet.html', comment)
+
+def add_single_comment(request):
+    comments = helper.add_comment(request)
+    return render(request, 'CommentSet.html', {'comments' : comments})
+
+def clear_comments(request):
+    helper.clear_comments()
+    return render(request, 'CommentSet.html')

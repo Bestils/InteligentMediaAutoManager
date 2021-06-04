@@ -1,0 +1,43 @@
+table{
+    border-radius:15px;
+    table-layout:fixed;
+    width:100%;
+    }
+table tr td{
+    padding:10px 5px 10px 5px;
+    font-weight:bold;
+    text-align:center;
+    width:20%;
+    font-size:min(2vw, 12px);
+    word-wrap:break-word;
+    border-bottom:1px solid gray;
+}
+tr .description, .tags {
+    width: 11%;
+}
+tr .id{
+    width:2%;
+}
+tr .author{
+    width:6%;
+}
+tr {
+    10%;
+}
+tr .id, .author, .description, .tags, .comment{
+    background:black;
+    color:white;
+}
+
+.inactive_button{
+        background:lightgray;
+        color:gray;
+        display:block;
+        padding:5px 0px 5px 0px;
+        text-align:center;
+        width:100%;
+        font-weight:bold;
+        border:2px solid red;
+        border-radius:15px;
+        font-size:min(2vw, 14px);
+}

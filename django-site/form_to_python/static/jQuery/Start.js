@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 // SUBMIT BUTTON
 $(document).ready(function(){
-    $("#launch").on({
+    $(".launch").on({
         mouseenter : function(){
             $(this).animate({backgroundColor: "gray", color: "black"});
         },

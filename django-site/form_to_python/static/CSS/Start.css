@@ -7,7 +7,7 @@ body{
     margin:0;
     width:100%;
     height:100%;
-    background:url("Images/bg.svg");
+    background-color:lightgreen;
     background-repeat:no-repeat;
     background-size:stretched;
 }
@@ -16,7 +16,7 @@ a:link{
         text-decoration:none;
     }
 
-    a,#Content #launch{
+    a,#Content .launch{
         background:black;
         color:white;
         display:block;
@@ -25,6 +25,7 @@ a:link{
         width:100%;
         font-weight:bold;
         border-radius:15px;
+        font-size:min(2vw, 14px);
     }
 
 #Welcome{
@@ -92,7 +93,7 @@ a:link{
     }
 
     #Content form{
-        padding:20px 20px 20px 20px;
+        padding:0px 20px 10px 20px;
     }
     #Content input{
         width:98%;
@@ -102,12 +103,17 @@ a:link{
         background:lightgray;
         border-radius:10px;
         font-weight:bold;
+        font-size:min(2vw,13px);
     }
 
+    #Content #comments_to_add{
+        background:none;
+        padding:5px 5px 5px 5px;
+    }
 
     #Content h3{
         margin-bottom:1%;
-        font-size:min(3vw, 17px);
+        font-size:min(2vw, 18px);
     }
 
     #Content p{
@@ -149,6 +155,8 @@ a:link{
         font-weight:bold;
         font-size:min(3vw, 18px);
     }
+
+
 
 
 

@@ -23,12 +23,16 @@
         <a href="{% url 'Exit' %}">
             Exit
         </a>
+
+        <a href="{% url 'Comments' %}">
+            Comments
+        </a>
     </div>
 
     <div id="Content">
         <h2>Settings</h2>
         <h3 class="error">{{settings_error}}</h3>
-        <form action="/Start/" method="post">
+        <form action="/CommentsAdd/" method="post">
             {% csrf_token %}
 
             <div id="login_form">
