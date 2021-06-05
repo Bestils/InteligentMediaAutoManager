@@ -1,15 +1,28 @@
 $(document).ready(function(){
-    var comment = $("#single_comment")
-    comment.keypress(function(){
-        if (comment.val().length > 1)
-        {
-            $("#single_comment_submit").attr("type" , "Submit");
-            $("#single_comment_submit").attr("class" , "launch");
-        }
-        else
-        {
-            $("#single_comment_submit").attr("type" , "text");
-            $("#single_comment_submit").attr("class" , "inactive_button");
+    var button = "single_comment_submit"
+    $("#single_comment").on({
+        keypress : function(){
+            comment = $("#single_comment").val();
+            commentButtonService(button, comment);
+        },
+        blur : function(){
+            comment = $("#single_comment").val();
+            commentButtonService(button, comment);
         }
     });
 });
+
+function commentButtonService(button, comment)
+{
+    if (comment.length > 0)
+    {
+        document.getElementById(button).setAttribute("type", "submit");
+        document.getElementById(button).setAttribute("class", "launch");
+    }
+    else
+    {
+        document.getElementById(button).setAttribute("type", "text");
+        document.getElementById(button).setAttribute("class", "inactive_button");
+    }
+
+}

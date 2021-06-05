@@ -64,6 +64,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries': {
+                'mongo_id' : 'form_to_python.templetags.mongo_id',
+            }
         },
     },
 ]

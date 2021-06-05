@@ -12,32 +12,47 @@ table tr td{
     word-wrap:break-word;
     border-bottom:1px solid gray;
 }
-tr .description, .tags {
-    width: 11%;
-}
-tr .id{
-    width:2%;
-}
-tr .author{
-    width:6%;
-}
-tr {
-    10%;
-}
-tr .id, .author, .description, .tags, .comment{
-    background:black;
-    color:white;
-}
+    tr .description, .tags {
+        width: 9%;
+    }
 
-.inactive_button{
+    tr .action{
+        width:5%;
+    }
+
+    tr .author{
+        width:4%;
+    }
+
+    tr .action,.author, .description, .tags, .comment{
+        background:black;
+        color:white;
+    }
+
+    #Content .inactive_button{
         background:lightgray;
         color:gray;
         display:block;
-        padding:5px 0px 5px 0px;
+        padding:10px 0px 10px 0px;
         text-align:center;
+        font-weight:bold;
+        border-radius:15px;
+        border:none;
+        font-size:min(2vw, 14px);
+        width:100%;
+    }
+
+    #Content .action_button{
+        font-size:min(2vw, 11px);
+        border-radius:5px;
+        padding:10px 0px 10px 0px;
         width:100%;
         font-weight:bold;
-        border:2px solid red;
-        border-radius:15px;
-        font-size:min(2vw, 14px);
-}
+    }
+
+    #Content #comment{
+        background:lightgreen;
+        color:black;
+        padding:5px 5px 5px 5px;
+        border-radius:10px;
+    }

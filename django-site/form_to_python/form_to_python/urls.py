@@ -27,5 +27,6 @@ urlpatterns = [
     path('Comments/', views.comments, name = "Comments"),
     path('CommentsAdd/', views.add_comment_record, name = "Comments_Setting"),
     path('AddSingleComment/', views.add_single_comment, name = "Single_Comment"),
-    path('ClearComments/', views.clear_comments, name = "Clear")
+    path('ClearComments/', views.clear_comments, name = "Clear"),
+    path('Delete/<slug:_id>/', views.delete_record, name = "Delete")
 ]

@@ -16,7 +16,7 @@ a:link{
         text-decoration:none;
     }
 
-    a,#Content .launch{
+    a, #Content .launch{
         background:black;
         color:white;
         display:block;
@@ -58,6 +58,14 @@ a:link{
         font-size:min(4vw, 25px);
     }
 
+    #Welcome a{
+        float:none;
+        display:inline;
+        padding:10px 30px 10px 30px;
+        border-bottom-left-radius:0px;
+        border-bottom-right-radius:0px;
+    }
+
 #Main{
     width:100%;
     border-radius:20px;
@@ -66,21 +74,20 @@ a:link{
 
 #Menu{
     float:left;
-    width:18%;
-    float:left;
+    width:100%;
     display:inline-block;
-    font-size:min(3vw, 20px);
+    font-size:18px;
 }
 
 #Content{
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     position:absolute;
-    left:27.5%;
+    left:17.5%;
     padding:0px 0px 0px 0px;
     float:left;
     display:inline-block;
     background:white;
-    width:45%;
+    width:65%;
  }
 
     #Content h2{
@@ -97,8 +104,9 @@ a:link{
     }
     #Content input{
         width:98%;
-        margin-top:2%;
-        padding:7px 0px 7px 5px;
+        margin-top:1%;
+        margin-bottom:1%;
+        padding:7px 0px 7px 7px;
         border:0.5px solid lightgray;
         background:lightgray;
         border-radius:10px;
@@ -109,6 +117,8 @@ a:link{
     #Content #comments_to_add{
         background:none;
         padding:5px 5px 5px 5px;
+        border-top-left-radius:0px;
+        font-weight:bold;
     }
 
     #Content h3{

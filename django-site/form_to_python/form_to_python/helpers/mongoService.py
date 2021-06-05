@@ -18,18 +18,15 @@ class MongoClientService:
             print("Oops!", sys.exc_info()[0], "occurred.")
 
 
-    def create(self, userName, userConfig, comments):
-        self.db.insert_one({'id':id,'authorName': userName, 'describe': userConfig, 'comments': comments}) # możliwe że jest opcja zrobienia tego z tym id inaczej
+    def create(self, userName, description, commentsSet):
+        self.db.insert_one({'id':id,'author_name': userName, 'description': description, 'commentsSet': commentsSet}) # możliwe że jest opcja zrobienia tego z tym id inaczej
 
     def readOne(self, id):
-       return self.db.find({'id': id}).limit(1)
+       return self.db.find_one({'id': id})
 
 
     def readAll(self):
        return self.db.find()
-
-    def addComment(self,id, comment): # need for adding comments
-        self.db.insert_one({'id' : id, 'comment' : comment})
 
     def updateComment(self, id, comment):
         self.db.updateOne({'id': id}, {'$set': {'comment': comment}})

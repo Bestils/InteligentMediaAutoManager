@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from instapy import InstaPy, smart_run
-from form_to_python.helpers import helper
+from form_to_python.helpers import settingsService
+from form_to_python.helpers import customExceptions
+from form_to_python.helpers import browserService
+from form_to_python.helpers import commentService
 
 
 def main(request):
@@ -9,50 +12,59 @@ def main(request):
 
 
 def botSettings(request):
-    context = {}
+    error = {}
 
     try:
-        settings = helper.get_settings(request)
+        settings = settingsService.get(request)
         print(settings)
         if settings == True:
-            raise helper.SettingsNullException()
+            raise customExceptions.SettingsNullException()
 
         session = InstaPy(username=settings['username'],
                           password=settings['password'],
                           headless_browser=False)
         with smart_run(session):
-            helper.set_settings(session, settings)
+            settingsService.configure(session, settings)
 
-    except helper.SettingsNullException:
-        context['settings_error'] = "The bot is unset. Please fill the settings."
-        return render(request, 'Start.html', context)
+    except customExceptions.SettingsNullException:
+        error['settings_error'] = "The bot is unset. Please fill the settings."
+        return render(request, 'Start.html', error)
     except ValueError:
-        return render(request, 'Start.html', context)
+        return render(request, 'Start.html', error)
     except NameError:
-        context['login_info'] = "XYZ"
-        return render(request, 'Start.html', context)
-
-def statistics(request):
-    return helper.get_login(request, 'Statistics.html')
-
-
-def exit(request):
-    helper.kill_browser()
-    helper.information()
-    helper.kill_server()
-    return HttpResponse("Bot has been KILLED")
+        error['login_info'] = "The login or password entered are incorrect. Please try again."
+        return render(request, 'Start.html', error)
 
 def comments(request):
-    return render(request, 'CommentSet.html')
+    db_comms = commentService.read_all()
+    return render(request, 'CommentSet.html', {'db_comments' : db_comms})
+
 
 def add_comment_record(request):
-    comment = helper.set_comments(request)
-    return render(request, 'CommentSet.html', comment)
+    comments = commentService.configure(request)
+    return render(request, 'CommentSet.html', {'db_comments' : comments})
+
 
 def add_single_comment(request):
-    comments = helper.add_comment(request)
-    return render(request, 'CommentSet.html', {'comments' : comments})
+    comments = commentService.add(request)
+    db_comms = commentService.read_all()
+    return render(request, 'CommentSet.html', {'comments' : comments, 'db_comments' : db_comms})
+
 
 def clear_comments(request):
-    helper.clear_comments()
-    return render(request, 'CommentSet.html')
+    commentService.clear()
+    return redirect('/Comments/')
+
+
+def delete_record(request, _id):
+    commentService.delete(_id)
+    return redirect('/Comments/')
+
+def exit(request):
+    browserService.kill_browser()
+    browserService.information()
+    browserService.kill_server()
+    return HttpResponse("Bot has been KILLED")
+
+def statistics(request):
+    return render(request, 'Statistics.html')
