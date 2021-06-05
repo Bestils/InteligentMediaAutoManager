@@ -36,19 +36,19 @@ def botSettings(request):
         return render(request, 'Start.html', error)
 
 def comments(request):
-    db_comms = commentService.read_all()
-    return render(request, 'CommentSet.html', {'db_comments' : db_comms})
+    all_db_comments = commentService.read_all()
+    return render(request, 'CommentSet.html', {'db_comments' : all_db_comments})
 
 
 def add_comment_record(request):
-    comments = commentService.configure(request)
-    return render(request, 'CommentSet.html', {'db_comments' : comments})
+    comments_with_new_one = commentService.configure_record(request)
+    return render(request, 'CommentSet.html', {'db_comments' : comments_with_new_one})
 
 
 def add_single_comment(request):
-    comments = commentService.add(request)
-    db_comms = commentService.read_all()
-    return render(request, 'CommentSet.html', {'comments' : comments, 'db_comments' : db_comms})
+    single_comment = commentService.add(request)
+    all_db_comments = commentService.read_all()
+    return render(request, 'CommentSet.html', {'comments' : single_comment, 'db_comments' : all_db_comments})
 
 
 def clear_comments(request):

@@ -5,7 +5,7 @@ from form_to_python.helpers.mongoService import MongoClientService
 mongo = MongoClientService("db", "comments", "localhost", 27017, "mongodbuser", "mongoPassword")
 comments = []
 
-def configure(request):
+def configure_record(request):
     tags = request.POST.get('tags').split()
 
     setting = {
