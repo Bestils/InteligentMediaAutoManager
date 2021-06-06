@@ -15,10 +15,10 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("a").on({
         mouseenter : function(){
-            $(this).animate({backgroundColor: "gray", color: "black"});
+            $(this).css({backgroundColor: "gray", color: "black"});
         },
         mouseleave : function(){
-            $(this).animate({backgroundColor: "black", color: "white"});
+            $(this).css({backgroundColor: "black", color: "white"});
         },
         click : function(){
             $(this).css({"color": "lightgreen", "background-color": "gray"});
@@ -28,15 +28,15 @@ $(document).ready(function(){
 
 // SUBMIT BUTTON
 $(document).ready(function(){
-    $("#launch").on({
+    $(".launch").on({
         mouseenter : function(){
-            $(this).animate({backgroundColor: "gray", color: "black"});
+            $(this).css({backgroundColor: "gray", color: "black"});
         },
         mouseleave : function(){
-            $(this).animate({backgroundColor: "black", color: "white"});
+            $(this).css({backgroundColor: "black", color: "white"});
         },
         click : function(){
-            $(this).css({"color": "lightgreen", "background-color": "gray"});
+            $(this).css({"color": "green", "background-color": "gray"});
         }
     });
 })

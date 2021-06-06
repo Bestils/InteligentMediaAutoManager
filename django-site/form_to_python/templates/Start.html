@@ -16,18 +16,22 @@
     <div id="title">Intelligent Media Auto Manager</div>
     <br/>
     <br/>
-</div>
-
-<div id="Main">
     <div id="Menu">
         <a href="{% url 'Exit' %}">
             Exit
         </a>
-    </div>
 
+        <a href="{% url 'Comments' %}">
+            Comments
+        </a>
+    </div>
+</div>
+
+<div id="Main">
     <div id="Content">
         <h2>Settings</h2>
-        <form action="/Main/" method="post">
+        <h3 class="error">{{settings_error}}</h3>
+        <form action="/CommentsAdd/" method="post">
             {% csrf_token %}
 
             <div id="login_form">
@@ -36,6 +40,7 @@
 
                 <label for="pass">Password</label>
                 <input type="password" id="pass" name="password" placeholder="Password" minlength="5" required>
+                <h3 class="error">{{login_info}}</h3>
             </div>
 
             <div id="show_password">
@@ -43,19 +48,22 @@
                 <input type="checkbox" class="checkbox" id="check">
             </div>
             <p>
-                Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/">Create an Account</a>
+                Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/" target="_blank">Create an Account</a>
             </p>
 
             <h3><strong>LIKE</strong> Photos By Tags</h3>
             <hr/>
             <input type="text" placeholder="Tags" name="photo_tags">
-            <input type="text" placeholder="Probability" name="like_photo_probability">
+            <label id="photo_tag_error"></label>
+            <input type="text" placeholder="Probability" name="like_photo_probability" id="like_photo_prob">
+            <label id="photo_prob_error"></label>
             <br/>
 
             <h3><strong>LIKE</strong> Videos By Tags</h3>
             <hr/>
             <input type="text" placeholder="Tags" name="video_tag">
-            <input type="text" placeholder="Probability" name="like_video_probability">
+            <label id="video_tag"></label>
+            <input type="text" placeholder="Probability" name="like_video_probability" id="like_video_prob">
             <br/>
 
             <h3><strong>FOLLOW</strong> By Location</h3>
@@ -71,13 +79,13 @@
             <h3><strong>UNFOLLOW</strong> Non Followers</h3>
             <hr />
             <input type="text" placeholder="Amount" name="non_followers_amount">
-            <input type="text" placeholder="Delay" name="non_followers_delay">
+            <input type="text" placeholder="Delay" name="non_followers_delay" id="non_followers_delay">
             <br/>
 
             <h3><strong>UNFOLLOW</strong> New Followers</h3>
             <hr />
             <input type="text" placeholder="Amount" name="new_followers_amount">
-            <input type="text" placeholder="Delay" name="new_followers_delay">
+            <input type="text" placeholder="Delay" name="new_followers_delay" id="new_followers_delay">
             <br/>
 
             <input type="Submit" value="Launch" id="launch">

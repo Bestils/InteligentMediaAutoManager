@@ -1,18 +1,8 @@
-from django.shortcuts import render
-import subprocess
-import signal
-import os
-
 from instagram.external.instagramInstance import InstagramInstance
+from django.shortcuts import render
 
 
-def get_login(request, page_url):
-    login = request.session.get('log')
-    context = {}
-    context['login'] = login
-    return render(request, page_url, context)
-
-def get_settings(request):
+def get(request):
     settings = {
         'username': request.POST.get('username'),
         'password': request.POST.get('password'),
@@ -27,35 +17,22 @@ def get_settings(request):
         'new_followers_amount': request.POST.get('new_followers_amount'),
         'new_followers_delay': request.POST.get('new_followers_delay')
     }
+    if check_if_null(settings):
+        settings = True
     return settings
 
-def set_settings(session, settings):
+
+def configure(session, settings):
     InstagramInstance.likePhotosByTags(session, [settings['photo_tags']], settings['photo_prob'])
     InstagramInstance.likeVideosByTags(session, [settings['video_tags']], settings['video_prob'])
     InstagramInstance.followByTags(session, [settings['follow_tags']])
-    InstagramInstance.followByLocation(session, settings['location'])
+    InstagramInstance.followByLocation(session, [settings['location']])
     InstagramInstance.unfollowNewFollowers(session, settings['new_followers_amount'], settings['new_followers_delay'])
     InstagramInstance.unfollowNonFollowers(session, settings['non_followers_amount'], settings['non_followers_delay'])
 
-def kill_browser():
-    try:
-        browser = subprocess.Popen(['pgrep', 'firefox'], stdout=subprocess.PIPE)
-        for pid in browser.stdout:
-            os.kill(int(pid), signal.SIGTERM)
-        print('----------------------EXITING-------------------------')
-        print('------------------------------------------------------')
-        print('-----------SERVER-DISABLED-SUCCESSFULLY---------------')
-        print('------------------------------------------------------')
-    except:
-        print("An error occured while exiting browser.")
 
-
-def kill_server():
-    try:
-        for line in os.popen("ps -a | grep python3"):
-            fields = line.split()
-            pid = fields[0]
-            os.kill(int(pid), signal.SIGTERM)
-
-    except:
-        print("An error occured while disabling server.")
+def check_if_null(settings):
+    for key in settings:
+        if settings[key] != '' and settings[key] != settings['username'] and settings[key] != settings['password']:
+            return False
+    return True

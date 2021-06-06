@@ -20,8 +20,13 @@ from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', csrf_exempt(views.main)),
-    path('Main/', csrf_exempt(views.botSettings)),
-    path('Statistics/', views.statistics, name ="Statistics"),
-    path('Exit/', views.exit, name ="Exit")
+    path('', csrf_exempt(views.main), name = "Main"),
+    path('Start/', csrf_exempt(views.botSettings)),
+    path('Statistics/', views.statistics, name = "Statistics"),
+    path('Exit/', views.exit, name = "Exit"),
+    path('Comments/', views.comments, name = "Comments"),
+    path('CommentsAdd/', views.add_comment_record, name = "Comments_Setting"),
+    path('AddSingleComment/', views.add_single_comment, name = "Single_Comment"),
+    path('ClearComments/', views.clear_comments, name = "Clear"),
+    path('Delete/<slug:_id>/', views.delete_record, name = "Delete")
 ]
