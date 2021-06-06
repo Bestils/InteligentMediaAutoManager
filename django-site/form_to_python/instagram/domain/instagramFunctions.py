@@ -24,7 +24,7 @@ class InstagramFunctions:
             session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Video')
             session.like_by_tags(tagList, amount=10)
 
-    # UNFOLLOW activity
+    # UNFOLLOW user after following them certain amount of time
     def unfollowNonFollowers(session, amount, unfollowDelay):
         if (amount != '' and unfollowDelay != ''):
             session.unfollow_users(amount=amount,

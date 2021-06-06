@@ -25,6 +25,7 @@ def botSettings(request):
                           headless_browser=False)
         with smart_run(session):
             settingsService.configure(session, settings)
+            session.unfollow_users(un)
 
     except customExceptions.SettingsNullException:
         error['settings_error'] = "The bot is unset. Please fill the settings."

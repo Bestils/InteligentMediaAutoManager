@@ -163,7 +163,13 @@ a:link{
     #Content .error{
         color:red;
         font-weight:bold;
-        font-size:min(3vw, 18px);
+        font-size:min(2vw, 15px);
+        margin:0;
+    }
+
+    #Content label{
+        color:gray;
+        font-weight:bold;
     }
 
 
