@@ -9,6 +9,7 @@ var green = "rgb(0, 128, 0)";
 
 $(document).ready(function(){
     $("#like_photo_probability_field").focusout(function(){
+
             probabilityError("like_photo_probability_field", "like_photo_probability_error_field", probability_error);
             checkBoth("like_photo_probability_field", "like_photo_probability_error_field", "like_photo_tags_field", "like_photo_tags_error_field");
     });
@@ -38,22 +39,22 @@ $(document).ready(function(){
 
     $("#unfollow_non_followers_amount_field").focusout(function(){
         valueError("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", amount_error)
-        checkBoth("unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field", "unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field");
+        checkBoth("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", "unfollow_non_followers_time_field", "unfollow_non_followers_time_field");
     });
 
     $("#unfollow_non_followers_time_field").focusout(function(){
         valueError("unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field", delay_error);
-        checkBoth("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", "unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field");
+        checkBoth("unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field", "unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field");
     });
 
     $("#unfollow_new_followers_amount_field").focusout(function(){
-        valueError("unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", amount_error)
-        checkBoth( "unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field", "unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field");
+        valueError("unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", amount_error);
+        checkBoth( "unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", "unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field");
     });
 
     $("#unfollow_new_followers_time_field").focusout(function(){
         valueError("unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field", delay_error);
-        checkBoth("unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", "unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field");
+        checkBoth("unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field", "unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field");
     });
 
     $("input").focusout(function(){
@@ -149,6 +150,7 @@ function probabilityError(input, error, error_description){
 
 function setError(input, error, error_description)
 {
+    console.log(error);
     document.getElementById(input).style.borderColor = "red";
     document.getElementById(input).style.borderWidth = "1px";
     document.getElementById(error).style.color = "red";
@@ -172,23 +174,20 @@ function setNeutral(input, error)
 function checkBoth(input, input_error, other, other_error)
 {
     var value = document.getElementById(input).value;
-    var other_value = document.getElementById(input).value;
+    var other_value = document.getElementById(other).value;
     var input_element = document.getElementById(input);
     var other_element = document.getElementById(other);
 
     var other_style = getComputedStyle(other_element);
     var input_style = getComputedStyle(input_element);
-    if(value.length == 0 && other_style.borderLeftColor == green)
-    {
-        setError(input, input_error, "This field can't be empty");
-    }
-    else if(input_style.borderLeftColor == green && other_value.length == 0)
+
+    if(other_value.length == 0 && input_style.borderLeftColor == green)
     {
         setError(other, other_error, "This field can't be empty");
     }
-    else
+    else if(other_style.borderLeftColor == green && value.length == 0)
     {
-        setNeutral(other, other_input);
+        setError(input, input_error, "This field can't be empty");
     }
 }
 
