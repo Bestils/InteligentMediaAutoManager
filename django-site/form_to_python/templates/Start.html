@@ -7,7 +7,7 @@
     <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
     <script src="{% static 'jQuery/Start.js' %}"></script>
-    <script src="{% static 'jQuery/Validator.js' %}"></script>
+    <script type="module" src="{% static 'jQuery/Validator.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/Start.css' %}">
 </head>
 <body>
@@ -37,7 +37,7 @@
 
             <div id="login_form">
                 <label for="login">Login</label>
-                <input type="text" id="login" name="username" placeholder="Login" minlength="3" required>
+                <input type="text" id="login" name="username" placeholder="Login" minlength="4" required>
 
                 <label for="pass">Password</label>
                 <input type="password" id="pass" name="password" placeholder="Password" minlength="5" required>
@@ -73,14 +73,18 @@
             <br/>
 
             <h3><strong>FOLLOW</strong> By Location</h3>
-            <label>Follows users by specified locations.</label>
+            <label>
+                Follows users by specified locations.
+            </label>
             <hr/>
             <input type="text" placeholder="Locations separated by space" name="location" id="locations_field">
             <label class="error" id="locations_error_field"></label>
             <br/>
 
             <h3><strong>FOLLOW</strong> By Tags</h3>
-            <label>Follows users by specified tags.</label>
+            <label>
+                Follows users by specified tags.
+            </label>
             <hr/>
             <input type="text" placeholder="Tags separated by space" name="follow_tags" id="follow_by_tags_field">
             <label class="error" id="follow_by_tags_error_field"></label>
