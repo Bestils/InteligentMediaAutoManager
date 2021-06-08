@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>BOT</title>
     {% load static %}
+    {% load mongo_id %}
     <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
     <script src="{% static 'jQuery/Start.js' %}"></script>
@@ -32,7 +33,7 @@
     <div id="Content">
         <h2>Settings</h2>
         <h3 class="error">{{settings_error}}</h3>
-        <form action="/CommentsAdd/" method="post">
+        <form action="/Start/" method="post" id="starting_form">
             {% csrf_token %}
 
             <div id="login_form">
@@ -52,8 +53,12 @@
                 Not Registered?<a href="https://www.instagram.com/accounts/emailsignup/" target="_blank">Create an Account</a>
             </p>
 
-            <h3><strong>LIKE</strong> Photos By Tags</h3>
-            <label>Search for photos by specified tags and like them with certain probability.</label>
+            <h3>
+                <strong>LIKE</strong> Photos By Tags
+            </h3>
+            <label>
+                Search for photos by specified tags and like them with certain probability.
+            </label>
             <hr/>
             <input type="text" placeholder="Tags separated by space" name="photo_tag" id="like_photo_tags_field">
             <label class="error" id="like_photo_tags_error_field"></label>
@@ -62,7 +67,9 @@
             <label class="error" id="like_photo_probability_error_field"></label>
             <br/>
 
-            <h3><strong>LIKE</strong> Videos By Tags</h3>
+            <h3>
+                <strong>LIKE</strong> Videos By Tags
+            </h3>
             <label>Search for videos by specified tags and like them with certain probability.</label>
             <hr/>
             <input type="text" placeholder="Tags separated by space" name="video_tag" id="like_video_tags_field">
@@ -74,7 +81,7 @@
 
             <h3><strong>FOLLOW</strong> By Location</h3>
             <label>
-                Follows users by specified locations.
+                Follows users by specified locations
             </label>
             <hr/>
             <input type="text" placeholder="Locations separated by space" name="location" id="locations_field">
@@ -91,7 +98,7 @@
             <br/>
 
             <h3><strong>UNFOLLOW</strong> Non Followers</h3>
-            <label>Unfollow non following set amount of users after specified time.</label>
+            <label>Unfollow non following set amount of users after specified time</label>
             <hr />
             <input type="text" placeholder="Amount" name="non_followers_amount" id="unfollow_non_followers_amount_field">
             <label class="error" id="unfollow_non_followers_amount_error_field"></label>
@@ -100,7 +107,7 @@
             <br/>
 
             <h3><strong>UNFOLLOW</strong> New Followers</h3>
-            <label>Unfollows set amount of users if specified time of following passess.</label>
+            <label>Unfollows set amount of users if specified time of following passess</label>
             <hr />
             <input type="text" placeholder="Amount" name="new_followers_amount" id="unfollow_new_followers_amount_field">
             <label class="error" id="unfollow_new_followers_amount_error_field"></label>
@@ -108,6 +115,39 @@
             <label class="error" id="unfollow_new_followers_time_error_field"></label>
             <br/>
 
+            <h3>
+                <strong id="comment_title">COMMENT</strong>
+                <input type="checkbox" id="comment_checkbox">
+            </h3>
+            <label id="comment_label">
+                Allows to comment posts by specified list
+            </label>
+            <hr/>
+            <label for="options" id="option_label">Please choose an option:
+                <select id="options" name="option">
+                {% for setting in db_comments %}
+                    <option value="{{setting|mongo_id}}">
+                        Author:   {{setting.author_name}}
+                        Description:  {{setting.description}}
+                        Tags:
+                        {% for commentSet in setting.commentsSet %}
+                            {% for tag in commentSet.mandatory_words %}
+                            #{{tag}}
+                            {% endfor %}
+                        {% endfor %}
+
+                        Comments:
+                        {% for commentSet in setting.commentsSet %}
+                            {% for comment in commentSet.comments %}
+                                "{{comment}}"
+                            <br />
+                            {% endfor %}
+                        {% endfor %}
+                    </option>
+                {% endfor %}
+                </select>
+                </label>
+            </table>
             <input type="Submit" value="Launch" class="launch" id="launch" readonly>
         </form>
     </div>
