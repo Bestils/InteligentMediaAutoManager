@@ -1,8 +1,4 @@
-from pymongo import MongoClient
-
-from pymongo import MongoClient
-import json
-from mongoService import  MongoClientService
+from mongo.mongoService import  MongoClientService
 
 
 def main():

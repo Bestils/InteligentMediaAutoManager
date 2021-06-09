@@ -41,6 +41,11 @@ class InstagramFunctions:
                                    unfollow_after=unfollowDelay,
                                    sleep_delay=600)
 
+    def setComments(session,  comments):
+            session.set_comments(comments)
+            session.set_delimit_commenting(enabled=True, max_comments=20, min_comments=0)
+            session.set_do_comment(enabled=True, percentage=80)
+
     def setPods(self, session, topic, mode):
         session.join_pods(topic=topic, engagement_mode=mode)
 

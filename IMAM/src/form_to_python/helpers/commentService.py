@@ -1,6 +1,6 @@
 import json
 from bson.objectid import ObjectId
-from form_to_python.helpers.mongoService import MongoClientService
+from mongo.mongoService import MongoClientService
 
 mongo = MongoClientService("db", "comments", "localhost", 27017, "mongodbuser", "mongoPassword")
 comments = []
