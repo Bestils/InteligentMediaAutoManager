@@ -85,11 +85,8 @@ class MyTestCase(unittest.TestCase):
         self.mongo.create("patryk", "test", ["typical comment", "lol nice!"])  # read all comments form db
         record = self.mongo.readOneByAuthor("patryk")  # read all comments form db
 
-        self.assertEqual(record["commentSet"],
-                         {'_id': ObjectId('60bffb9aebe111b51da485ea'),
-                          'author_name': 'patryk',
-                          'commentsSet': ['typical comment', 'lol nice!'],
-                          'description': 'test'})
+        self.assertEqual(record["author_name"],
+                        "patryk")
 
     def canReadNotExistingRecord(self):
         self.mongo.create("patryk", "test", ["typical comment", "lol nice!"])  # read all comments form db
