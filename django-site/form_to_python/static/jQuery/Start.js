@@ -40,3 +40,31 @@ $(document).ready(function(){
         }
     });
 })
+
+// COMMENT BUTTON
+$(document).ready(function(){
+    $("#comment_checkbox").click(function(){
+        showComments();
+    });
+})
+
+function showComments(){
+    var checked = document.getElementById("comment_checkbox").checked;
+    var title = document.getElementById("comment_title");
+    var comment_label = document.getElementById("comment_label");
+    var option_label = document.getElementById("option_label");
+    var list = document.getElementById("options");
+    console.log(list);
+    if (checked == true){
+        title.style.color = "green";
+        comment_label.style.display = "block";
+        option_label.style.display = "block";
+        list.style.display = "block";
+    }
+    else{
+        title.style.color = "gray";
+        comment_label.style.display = "none";
+        option_label.style.display = "none";
+         list.style.display = "none";
+    }
+}

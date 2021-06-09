@@ -16,6 +16,10 @@ a:link{
         text-decoration:none;
     }
 
+    #Content #launch{
+        display:none;
+    }
+
     a, #Content .launch{
         background:black;
         color:white;
@@ -102,7 +106,7 @@ a:link{
     #Content form{
         padding:0px 20px 10px 20px;
     }
-    #Content input{
+    #Content input, #Content #options{
         width:98%;
         margin-top:1%;
         margin-bottom:1%;
@@ -163,7 +167,30 @@ a:link{
     #Content .error{
         color:red;
         font-weight:bold;
-        font-size:min(3vw, 18px);
+        font-size:min(2vw, 15px);
+        margin:0;
+    }
+
+    #Content label{
+        color:gray;
+        font-weight:bold;
+        font-size:min(2vw, 15px);
+    }
+
+    #Content #comment_checkbox{
+        width:2%;
+        transform: scale(1.25);
+    }
+
+    #Content #comment_title{
+        color:gray;
+    }
+
+    #Content #comment_label, #Content #options, #Content #option_label{
+        display:none;
+    }
+    #Content #options{
+        width:100%;
     }
 
 
