@@ -6,6 +6,7 @@ var amount_error = "Amount must be a number greater than 0";
 var delay_error = "Delay must be a number greater than 0";
 var location_error = "Locations can only contain letters";
 var green = "rgb(0, 128, 0)";
+var red = "rgb(255, 0, 0)";
 
 $(document).ready(function(){
     $("#like_photo_probability_field").focusout(function(){
@@ -58,26 +59,26 @@ $(document).ready(function(){
     });
 
     $("input").focusout(function(){
-        checkForm(green);
+        checkForm(red);
     });
 })
 
-function checkForm(green)
+function checkForm(red)
 {
     var elements = document.getElementsByTagName("input");
     for(var i = 0; i < elements.length;i++)
     {
         var style = getComputedStyle(elements[i]);
         var border = style.borderLeftColor;
-
-        if(border == green)
+        console.log(border);
+        if(border == red)
         {
-            document.getElementById("launch").style.display="block";
-            break;
+            document.getElementById("launch").style.display="none";
+            break
         }
         else
         {
-            document.getElementById("launch").style.display="none";
+            document.getElementById("launch").style.display="block";
         }
     }
 }
@@ -150,7 +151,6 @@ function probabilityError(input, error, error_description){
 
 function setError(input, error, error_description)
 {
-    console.log(error);
     document.getElementById(input).style.borderColor = "red";
     document.getElementById(input).style.borderWidth = "1px";
     document.getElementById(error).style.color = "red";

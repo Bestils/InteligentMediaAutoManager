@@ -14,6 +14,7 @@ def main(request):
 
 def botSettings(request):
     error = {}
+    state = False
     settings_error = "The bot is unset. Please fill the settings."
     login_error = "The login or password entered are incorrect. Please try again."
     all_db_comments = commentService.read_all()
@@ -27,16 +28,13 @@ def botSettings(request):
                           password=settings['password'],
                           headless_browser=False)
         with smart_run(session):
-            settingsService.configure(session, settings)
-            session.unfollow_users(un)
+            session.set_do_like(enabled=True, percentage=50)
+            session.set_do_comment(enabled=True, percentage=25)
+            session.set_comments(['Awesome', 'Really Cool', 'I like your stuff'])
+            session.follow_by_tags(['cat1'], 20)
 
     except customExceptions.SettingsNullException:
-
         return render(request, 'Start.html', {'settings_error' : settings_error,'db_comments' : all_db_comments})
-    except ValueError:
-        return render(request, 'Start.html', {'settings_error' : settings_error, 'db_comments' : all_db_comments})
-    except NameError:
-        return render(request, 'Start.html', {'login_info' : login_error,'db_comments' : all_db_comments})
 
 def comments(request):
     all_db_comments = commentService.read_all()

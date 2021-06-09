@@ -8,7 +8,7 @@ def get(request):
     settings = {
         'username': request.POST.get('username'),
         'password': request.POST.get('password'),
-        'photo_tags': request.POST.get('photo_tags'),
+        'photo_tags': request.POST.get('like_photo_tag'),
         'photo_prob': request.POST.get('like_photo_probability'),
         'video_tags': request.POST.get('video_tag'),
         'video_prob': request.POST.get('like_video_probability'),
@@ -18,9 +18,7 @@ def get(request):
         'non_followers_delay': request.POST.get('non_followers_delay'),
         'new_followers_amount': request.POST.get('new_followers_amount'),
         'new_followers_delay': request.POST.get('new_followers_delay'),
-        'option': request.POST.get('option')
     }
-    print(read_one(settings['option']))
     if check_if_null(settings):
         settings = True
     return settings

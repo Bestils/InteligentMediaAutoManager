@@ -13,6 +13,7 @@ class InstagramFunctions:
     def likePhotosByTags(session, tagList, probability):
         # Like posts based on hashtags and like 3 posts of its poster
         # this will allow us to make higher impact on user
+        print("likePhotosByTags")
         if (tagList != '' and probability != ''):
             session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Photo')
             session.like_by_tags(tagList, amount=10)
