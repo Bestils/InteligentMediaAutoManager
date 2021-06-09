@@ -1,12 +1,14 @@
 from instagram.external.instagramInstance import InstagramInstance
 from django.shortcuts import render
-
+from bson.objectid import ObjectId
+from form_to_python.helpers.mongoService import MongoClientService
+from form_to_python.helpers.commentService import read_one
 
 def get(request):
     settings = {
         'username': request.POST.get('username'),
         'password': request.POST.get('password'),
-        'photo_tags': request.POST.get('photo_tags'),
+        'photo_tags': request.POST.get('like_photo_tag'),
         'photo_prob': request.POST.get('like_photo_probability'),
         'video_tags': request.POST.get('video_tag'),
         'video_prob': request.POST.get('like_video_probability'),
@@ -15,7 +17,7 @@ def get(request):
         'non_followers_amount': request.POST.get('non_followers_amount'),
         'non_followers_delay': request.POST.get('non_followers_delay'),
         'new_followers_amount': request.POST.get('new_followers_amount'),
-        'new_followers_delay': request.POST.get('new_followers_delay')
+        'new_followers_delay': request.POST.get('new_followers_delay'),
     }
     if check_if_null(settings):
         settings = True

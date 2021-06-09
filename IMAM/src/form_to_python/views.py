@@ -8,12 +8,16 @@ from form_to_python.helpers import commentService
 
 
 def main(request):
-    return render(request, 'Start.html')
+    all_db_comments = commentService.read_all()
+    return render(request, 'Start.html', {'db_comments' : all_db_comments})
 
 
 def botSettings(request):
     error = {}
-
+    state = False
+    settings_error = "The bot is unset. Please fill the settings."
+    login_error = "The login or password entered are incorrect. Please try again."
+    all_db_comments = commentService.read_all()
     try:
         settings = settingsService.get(request)
         print(settings)
@@ -24,16 +28,13 @@ def botSettings(request):
                           password=settings['password'],
                           headless_browser=False)
         with smart_run(session):
-            settingsService.configure(session, settings)
+            session.set_do_like(enabled=True, percentage=50)
+            session.set_do_comment(enabled=True, percentage=25)
+            session.set_comments(['Awesome', 'Really Cool', 'I like your stuff'])
+            session.follow_by_tags(['cat1'], 20)
 
     except customExceptions.SettingsNullException:
-        error['settings_error'] = "The bot is unset. Please fill the settings."
-        return render(request, 'Start.html', error)
-    except ValueError:
-        return render(request, 'Start.html', error)
-    except NameError:
-        error['login_info'] = "The login or password entered are incorrect. Please try again."
-        return render(request, 'Start.html', error)
+        return render(request, 'Start.html', {'settings_error' : settings_error,'db_comments' : all_db_comments})
 
 def comments(request):
     all_db_comments = commentService.read_all()
