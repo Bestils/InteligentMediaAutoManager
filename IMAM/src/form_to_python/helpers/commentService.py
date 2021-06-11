@@ -1,9 +1,10 @@
 import json
 from bson.objectid import ObjectId
-from form_to_python.helpers.mongoService import MongoClientService
+from mongo.mongoService import MongoClientService
 
 mongo = MongoClientService("db", "comments", "localhost", 27017, "mongodbuser", "mongoPassword")
 comments = []
+
 
 def configure_record(request):
     tags = request.POST.get('tags').split()
@@ -16,12 +17,17 @@ def configure_record(request):
             'comments': comments
         }]
     }
-    setting_json = json.dumps(setting)  # json format
-    setting_dict = json.loads(setting_json)
-    mongo.db.insert_one(setting_dict)
+    setting_dict = toJsonFormatedDict
+    mongo.db.insert_one(setting)
     comments.clear()
     comments_list = read_all()
     return comments_list
+
+
+def toJsonFormatedDict(value):
+    setting_json = json.dumps(value)  # json format
+    setting_dict = json.loads(setting_json)
+    return setting_dict
 
 
 def add(request):
@@ -36,7 +42,7 @@ def clear():
 
 def read_all():
     comments_list = []
-    all = mongo.readAll() # read all comments form db
+    all = mongo.readAll()  # read all comments form db
     for comment in all:
         comments_list.append(comment)
     return comments_list
@@ -44,8 +50,3 @@ def read_all():
 
 def delete(_id):
     mongo.db.delete_one({'_id': ObjectId(_id)})
-
-def read_one(_id):
-    record = mongo.db.find_one({'_id': ObjectId(_id)})
-    print(record)
-    return record

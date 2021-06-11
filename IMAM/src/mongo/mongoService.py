@@ -20,8 +20,11 @@ class MongoClientService:
     def create(self, userName, description, commentsSet):
         self.db.insert_one({'author_name': userName, 'description': description, 'commentsSet': commentsSet})
         
-    def readOne(self, id):
-       return self.db.find_one({'id': id})
+    def readOneById(self, id):
+       return self.db.find_one({'_id': id})
+
+    def readOneByAuthor(self, author):
+        return self.db.find_one({'author_name': author})
       
     def readAll(self):
        return self.db.find()
