@@ -44,8 +44,3 @@ def read_all():
 
 def delete(_id):
     mongo.db.delete_one({'_id': ObjectId(_id)})
-
-def read_one(_id):
-    record = mongo.db.find_one({'_id': ObjectId(_id)})
-    print(record)
-    return record

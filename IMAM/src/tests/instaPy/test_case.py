@@ -71,7 +71,7 @@ class MyTestCase(unittest.TestCase):
             self.session.set_user_interact(amount=2, randomize=True, percentage=60)
             self.session.set_do_follow(enabled=True, percentage=40)
             self.session.set_do_like(enabled=True, percentage=80)
-            InstagramInstance.followByTags(self,self.session,self.my_hashtags)
+            InstagramInstance.followByTags(self.session,self.my_hashtags)
 
     def testHybidfollowByLocation(self):
         with smart_run(self.session):
