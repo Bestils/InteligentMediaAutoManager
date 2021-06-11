@@ -1,39 +1,48 @@
 from enum import Enum
 
-from instapy import InstaPy, smart_run
-
-
 class InstagramFunctions:
-    def __init__(self, username,password):
-        self.session =  InstaPy(username=username,
-                  password=password,
-                  headless_browser=True)
-    def startMachine(self, location ,tagList, likeProbability,videPropability,unfolowAmount,unfollowDelay, comments, mode="normal" , topic = "entertainment"):
-        with smart_run( self.session):
-            if (location != ''):
-                self.session.follow_by_locations(location, amount=100)
-            if (tagList != ''):
-                self.session.follow_by_tags(tagList, amount=100)
-    
-            if (tagList != '' and likeProbability != ''):
-                self.session.set_user_interact(amount=3, randomize=True, percentage=likeProbability, media='Photo')
-                self.session.like_by_tags(tagList, amount=10)
-                
-            if (tagList != '' and videPropability != ''):
-                self.session.set_user_interact(amount=3, randomize=True, percentage=videPropability, media='Video')
-                self.session.like_by_tags(tagList, amount=10)
-            if (unfolowAmount != '' and unfollowDelay != ''):
-                self.session.unfollow_users(amount=unfolowAmount,
-                                       allFollowing=True,
-                                       style="FIFO",
-                                       unfollow_after=unfollowDelay,
-                                       sleep_delay=600)
-            if (comments != ''):
-                self.session.set_comments(comments)
-                self.session.set_delimit_commenting(enabled=True, max_comments=20, min_comments=0)
-                self.session.set_do_comment(enabled=True, percentage=80)
-       
-            self.session.join_pods(topic=topic, engagement_mode=mode)
+    def followByLocation(session, location):
+        print("INSTAGRAM FUNCTIONS - LOCATION")
+        if (location != ''):
+            session.follow_by_locations(location, amount=100)
+
+    def followByTags(session, tagList):
+        if (tagList != ''):
+            session.follow_by_tags(tagList, amount=100)
+
+    def likePhotosByTags(session, tagList, probability):
+        # Like posts based on hashtags and like 3 posts of its poster
+        # this will allow us to make higher impact on user
+        if (tagList != '' and probability != ''):
+            session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Photo')
+            session.like_by_tags(tagList, amount=10)
+
+    def likeVideosByTags(session, tagList, probability):
+        # Like posts based on hashtags and like 3 posts of its poster
+        # this will allow us to make higher impact on user
+        if (tagList != '' and probability != ''):
+            session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Video')
+            session.like_by_tags(tagList, amount=10)
+
+    # UNFOLLOW activity
+    def unfollowNonFollowers(session, amount, unfollowDelay):
+        if (amount != '' and unfollowDelay != ''):
+            session.unfollow_users(amount=amount,
+                                   nonFollowers=True,
+                                   style="FIFO",
+                                   unfollow_after=unfollowDelay,
+                                   sleep_delay=600)
+
+    def unfollowNewFollowers(session, amount, unfollowDelay):
+        if (amount != '' and unfollowDelay != ''):
+            session.unfollow_users(amount=amount,
+                                   allFollowing=True,
+                                   style="FIFO",
+                                   unfollow_after=unfollowDelay,
+                                   sleep_delay=600)
+
+    def setPods(self, session, topic, mode):
+        session.join_pods(topic=topic, engagement_mode=mode)
 
 
 # engagement_mode: Desided engagement mode for your posts.

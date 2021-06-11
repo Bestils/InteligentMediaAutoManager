@@ -1,8 +1,7 @@
 from instagram.external.instagramInstance import InstagramInstance
 from django.shortcuts import render
 from bson.objectid import ObjectId
-from form_to_python.helpers.mongoService import MongoClientService
-from form_to_python.helpers.commentService import read_one
+
 
 def get(request):
     settings = {
