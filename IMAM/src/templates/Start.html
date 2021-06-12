@@ -97,22 +97,13 @@
             <label class="error" id="follow_by_tags_error_field"></label>
             <br/>
 
-            <h3><strong>UNFOLLOW</strong> Non Followers</h3>
-            <label>Unfollow non following set amount of users after specified time</label>
+            <h3><strong>UNFOLLOW</strong></h3>
+            <label>Unfollow an amount of users</label>
             <hr />
-            <input type="text" placeholder="Amount" name="non_followers_amount" id="unfollow_non_followers_amount_field">
+            <input type="text" placeholder="Amount" name="unfollow_amount" id="unfollow_non_followers_amount_field">
             <label class="error" id="unfollow_non_followers_amount_error_field"></label>
-            <input type="text" placeholder="Time in minutes" name="non_followers_delay" id="unfollow_non_followers_time_field">
+            <input type="text" placeholder="Time in minutes" name="unfollow_delay" id="unfollow_non_followers_time_field">
             <label class="error" id="unfollow_non_followers_time_error_field"></label>
-            <br/>
-
-            <h3><strong>UNFOLLOW</strong> New Followers</h3>
-            <label>Unfollows set amount of users if specified time of following passess</label>
-            <hr />
-            <input type="text" placeholder="Amount" name="new_followers_amount" id="unfollow_new_followers_amount_field">
-            <label class="error" id="unfollow_new_followers_amount_error_field"></label>
-            <input type="text" placeholder="Time in minutes" name="new_followers_delay" id="unfollow_new_followers_time_field">
-            <label class="error" id="unfollow_new_followers_time_error_field"></label>
             <br/>
 
             <h3>
@@ -125,6 +116,7 @@
             <hr/>
             <label for="options" id="option_label">Please choose an option:
                 <select id="options" name="option">
+                    <option value="first">-----------------------------</option>
                 {% for setting in db_comments %}
                     <option value="{{setting|mongo_id}}">
                         Author:   {{setting.author_name}}

@@ -3,7 +3,7 @@ from instapy import InstaPy
 from instapy import smart_run
 
 insta_username = 'patrykgaweda1'
-insta_password = 'YouKnowNothingJonSnow'
+insta_password = 'YouKnowNothingJonSnow1'
 
 session = InstaPy(username=insta_username,
                   password=insta_password,

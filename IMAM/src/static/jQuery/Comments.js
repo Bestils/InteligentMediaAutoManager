@@ -2,12 +2,12 @@ $(document).ready(function(){
 
     $("#single_comment").on({
         keypress : function(){
-            singleCommentButtonService(single_comment_button, comment)
-            submitButtonService(submit_button, comments_to_add)
+            singleCommentButtonService()
+            submitButtonService()
         },
         blur : function(){
-            singleCommentButtonService(single_comment_button, comment)
-            submitButtonService(submit_button, comments_to_add)
+            singleCommentButtonService()
+            submitButtonService()
         }
     });
 });
@@ -15,11 +15,11 @@ $(document).ready(function(){
 function singleCommentButtonService(button, comment)
 {
     var single_comment_button = "single_comment_submit";
-    var comment = document.getElementById("comment").value;
+    var comment = document.getElementById("single_comment").value;
     if (comment.length > 0)
     {
-        document.getElementById(button).setAttribute("type", "submit");
-        document.getElementById(button).setAttribute("class", "launch");
+        document.getElementById(single_comment_button).setAttribute("type", "submit");
+        document.getElementById(single_comment_button).setAttribute("class", "launch");
     }
     else
     {

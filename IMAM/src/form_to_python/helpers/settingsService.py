@@ -1,5 +1,5 @@
-from instagram.external.instagramInstance import InstagramInstance
-from django.shortcuts import render
+from instagram.domain.instagramFunctions import InstagramFunctions
+from form_to_python.helpers.commentService import read_one
 from bson.objectid import ObjectId
 
 
@@ -7,34 +7,37 @@ def get(request):
     settings = {
         'username': request.POST.get('username'),
         'password': request.POST.get('password'),
-        'photo_tags': request.POST.get('like_photo_tag'),
+        'photo_tags': request.POST.get('like_photo_tag').split(' '),
         'photo_prob': request.POST.get('like_photo_probability'),
-        'video_tags': request.POST.get('video_tag'),
+        'video_tags': request.POST.get('video_tag').split(' '),
         'video_prob': request.POST.get('like_video_probability'),
-        'location': request.POST.get('location'),
-        'follow_tags': request.POST.get('follow_tags'),
-        'non_followers_amount': request.POST.get('non_followers_amount'),
-        'non_followers_delay': request.POST.get('non_followers_delay'),
-        'new_followers_amount': request.POST.get('new_followers_amount'),
-        'new_followers_delay': request.POST.get('new_followers_delay'),
+        'location': request.POST.get('location').split(' '),
+        'follow_tags': request.POST.get('follow_tags').split(' '),
+        'unfollow_amount': request.POST.get('unfollow_amount'),
+        'unfollow_delay': request.POST.get('unfollow_delay'),
+        'option': request.POST.get('option')
     }
+    settings['option'] = getComments(settings)
     if check_if_null(settings):
         settings = True
     return settings
 
 
-def configure(session, settings):
-    InstagramInstance.configureSession(session, 5000, 30, 3000, 30)
-    InstagramInstance.likePhotosByTags(session, [settings['photo_tags']], settings['photo_prob'])
-    InstagramInstance.likeVideosByTags(session, [settings['video_tags']], settings['video_prob'])
-    InstagramInstance.followByTags(session, [settings['follow_tags']])
-    InstagramInstance.followByLocation(session, [settings['location']])
-    InstagramInstance.unfollowNewFollowers(session, settings['new_followers_amount'], settings['new_followers_delay'])
-    InstagramInstance.unfollowNonFollowers(session, settings['non_followers_amount'], settings['non_followers_delay'])
-
+def configure(settings):
+    instagram = InstagramFunctions(settings['username'], settings['password'])
+    instagram.startMachine(settings['photo_tags'], settings['photo_prob'], settings['video_tags'], settings['video_prob'], settings['location'], settings['unfollow_amount'], settings['unfollow_delay'], settings['option'], settings['follow_tags'])
 
 def check_if_null(settings):
     for key in settings:
         if settings[key] != '' and settings[key] != settings['username'] and settings[key] != settings['password']:
             return False
     return True
+
+def getComments(settings):
+    comments = {}
+    if (settings['option'] != 'first'):
+        commentSet = read_one(settings['option'])
+        comments = commentSet['commentsSet']
+        comments = comments[0]
+        print(comments)
+    return comments

@@ -12,10 +12,10 @@ def configure_record(request):
     setting = {
         'author_name': request.POST.get('author_name'),
         'description': request.POST.get('description'),
-        'commentsSet': [{
+        'commentsSet': {
             'mandatory_words': tags,
             'comments': comments
-        }]
+        }
     }
     setting_dict = toJsonFormatedDict
     mongo.db.insert_one(setting)
@@ -46,6 +46,9 @@ def read_all():
     for comment in all:
         comments_list.append(comment)
     return comments_list
+
+def read_one(_id):
+    return mongo.db.find_one({'_id': ObjectId(_id)})
 
 def read_tmp_comment_list():
     return comments

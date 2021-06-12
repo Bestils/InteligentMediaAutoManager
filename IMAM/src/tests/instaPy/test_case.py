@@ -7,7 +7,7 @@ from instagram.external.instagramInstance import InstagramInstance
 class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.session = InstaPy(username="patrykgaweda1",
-                          password="YouKnowNothingJonSnow",
+                          password="YouKnowNothingJonSnow1",
                           headless_browser=False)
 
         self.donLikeTags = ['sad','mad','bad' , 'depression']

@@ -24,12 +24,11 @@ def botSettings(request):
         if settings == True:
             raise customExceptions.SettingsNullException()
 
-        session = InstaPy(username=settings['username'],
-                          password=settings['password'],
-                          headless_browser=False)
-        with smart_run(session):
-            settingsService.configure(session, settings)
-
+        settingsService.configure(settings)
+    except NameError:
+        return render(request, 'Start.html', {'login_info': 'Your login or password is incorrect. Please try again', 'db_comments': all_db_comments})
+    except ValueError:
+        return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
     except customExceptions.SettingsNullException:
         return render(request, 'Start.html', {'settings_error' : settings_error,'db_comments' : all_db_comments})
 
