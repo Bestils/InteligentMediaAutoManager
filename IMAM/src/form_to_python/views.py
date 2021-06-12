@@ -28,17 +28,16 @@ def botSettings(request):
                           password=settings['password'],
                           headless_browser=False)
         with smart_run(session):
-            session.set_do_like(enabled=True, percentage=50)
-            session.set_do_comment(enabled=True, percentage=25)
-            session.set_comments(['Awesome', 'Really Cool', 'I like your stuff'])
-            session.follow_by_tags(['cat1'], 20)
+            settingsService.configure(session, settings)
 
     except customExceptions.SettingsNullException:
         return render(request, 'Start.html', {'settings_error' : settings_error,'db_comments' : all_db_comments})
 
 def comments(request):
+    commentService.read_all()
     all_db_comments = commentService.read_all()
-    return render(request, 'CommentSet.html', {'db_comments' : all_db_comments})
+    tmp_comments = commentService.read_tmp_comment_list()
+    return render(request, 'CommentSet.html', {'comments' : tmp_comments, 'db_comments' : all_db_comments})
 
 
 def add_comment_record(request):
@@ -66,6 +65,3 @@ def exit(request):
     browserService.information()
     browserService.kill_server()
     return HttpResponse("Bot has been KILLED")
-
-def statistics(request):
-    return render(request, 'Statistics.html')

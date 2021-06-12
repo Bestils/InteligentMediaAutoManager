@@ -47,6 +47,8 @@ def read_all():
         comments_list.append(comment)
     return comments_list
 
+def read_tmp_comment_list():
+    return comments
 
 def delete(_id):
     mongo.db.delete_one({'_id': ObjectId(_id)})

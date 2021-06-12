@@ -2,30 +2,33 @@ from enum import Enum
 
 class InstagramFunctions:
     def followByLocation(session, location):
-        print("INSTAGRAM FUNCTIONS - LOCATION")
         if (location != ''):
             session.follow_by_locations(location, amount=100)
 
     def followByTags(session, tagList):
+        print("followByTags")
         if (tagList != ''):
             session.follow_by_tags(tagList, amount=100)
 
     def likePhotosByTags(session, tagList, probability):
         # Like posts based on hashtags and like 3 posts of its poster
         # this will allow us to make higher impact on user
+        print("likePhotosByTags")
         if (tagList != '' and probability != ''):
             session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Photo')
-            session.like_by_tags(tagList, amount=10)
+            session.like_by_tags(tagList, amount=50)
 
     def likeVideosByTags(session, tagList, probability):
         # Like posts based on hashtags and like 3 posts of its poster
         # this will allow us to make higher impact on user
+        print("likeVideosByTags")
         if (tagList != '' and probability != ''):
             session.set_user_interact(amount=3, randomize=True, percentage=probability, media='Video')
             session.like_by_tags(tagList, amount=10)
 
     # UNFOLLOW activity
     def unfollowNonFollowers(session, amount, unfollowDelay):
+        print("Unfollow")
         if (amount != '' and unfollowDelay != ''):
             session.unfollow_users(amount=amount,
                                    nonFollowers=True,
@@ -43,7 +46,6 @@ class InstagramFunctions:
 
     def setPods(self, session, topic, mode):
         session.join_pods(topic=topic, engagement_mode=mode)
-
 
 # engagement_mode: Desided engagement mode for your posts.
 # There are four levels of engagement modes 'no_comments', 'light', 'normal' and 'heavy'(normal by default).

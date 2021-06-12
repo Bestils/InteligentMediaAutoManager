@@ -24,6 +24,7 @@ def get(request):
 
 
 def configure(session, settings):
+    InstagramInstance.configureSession(session, 5000, 30, 3000, 30)
     InstagramInstance.likePhotosByTags(session, [settings['photo_tags']], settings['photo_prob'])
     InstagramInstance.likeVideosByTags(session, [settings['video_tags']], settings['video_prob'])
     InstagramInstance.followByTags(session, [settings['follow_tags']])
