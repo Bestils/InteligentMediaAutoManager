@@ -8,7 +8,7 @@
     <script src="{% static 'jQuery/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'jQuery/jquery-ui.min.js' %}"></script>
     <script src="{% static 'jQuery/Start.js' %}"></script>
-    <script type="module" src="{% static 'jQuery/Validator.js' %}"></script>
+    <script src="{% static 'jQuery/Validator.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/Start.css' %}">
 </head>
 <body>
@@ -114,32 +114,31 @@
                 Allows to comment posts by specified list
             </label>
             <hr/>
-            <label for="options" id="option_label">Please choose an option:
+            <div id="option_label">
                 <select id="options" name="option">
-                    <option value="first">-----------------------------</option>
+                    <option value="first">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</option>
                 {% for setting in db_comments %}
                     <option value="{{setting|mongo_id}}">
-                        Author:   {{setting.author_name}}
-                        Description:  {{setting.description}}
-                        Tags:
+                        AUTHOR &rarr; {{setting.author_name}}
+                        &nbsp;&nbsp;DESCRIPTION &rarr; {{setting.description}}
+                        &nbsp;&nbsp;TAGS &rarr;
                         {% for commentSet in setting.commentsSet %}
                             {% for tag in commentSet.mandatory_words %}
                             #{{tag}}
                             {% endfor %}
                         {% endfor %}
 
-                        Comments:
+                         &nbsp;&nbsp;COMMENTS &rarr;
                         {% for commentSet in setting.commentsSet %}
                             {% for comment in commentSet.comments %}
-                                "{{comment}}"
+                                "{{comment}}"&nbsp;
                             <br />
                             {% endfor %}
                         {% endfor %}
                     </option>
                 {% endfor %}
                 </select>
-                </label>
-            </table>
+                </div>
             <input type="Submit" value="Launch" class="launch" id="launch" readonly>
         </form>
     </div>

@@ -1,6 +1,5 @@
 from instagram.domain.instagramFunctions import InstagramFunctions
 from form_to_python.helpers.commentService import read_one
-from bson.objectid import ObjectId
 
 
 def get(request):
@@ -27,11 +26,13 @@ def configure(settings):
     instagram = InstagramFunctions(settings['username'], settings['password'])
     instagram.startMachine(settings['photo_tags'], settings['photo_prob'], settings['video_tags'], settings['video_prob'], settings['location'], settings['unfollow_amount'], settings['unfollow_delay'], settings['option'], settings['follow_tags'])
 
+
 def check_if_null(settings):
     for key in settings:
         if settings[key] != '' and settings[key] != settings['username'] and settings[key] != settings['password']:
             return False
     return True
+
 
 def getComments(settings):
     comments = {}
@@ -39,5 +40,4 @@ def getComments(settings):
         commentSet = read_one(settings['option'])
         comments = commentSet['commentsSet']
         comments = comments[0]
-        print(comments)
     return comments

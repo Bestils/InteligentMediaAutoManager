@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from instapy import InstaPy, smart_run
 from form_to_python.helpers import settingsService
 from form_to_python.helpers import customExceptions
 from form_to_python.helpers import browserService
@@ -13,14 +12,11 @@ def main(request):
 
 
 def botSettings(request):
-    error = {}
-    state = False
-    settings_error = "The bot is unset. Please fill the settings."
-    login_error = "The login or password entered are incorrect. Please try again."
     all_db_comments = commentService.read_all()
+
     try:
         settings = settingsService.get(request)
-        print(settings)
+
         if settings == True:
             raise customExceptions.SettingsNullException()
 
@@ -30,7 +26,7 @@ def botSettings(request):
     except ValueError:
         return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
     except customExceptions.SettingsNullException:
-        return render(request, 'Start.html', {'settings_error' : settings_error,'db_comments' : all_db_comments})
+        return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
 
 def comments(request):
     commentService.read_all()

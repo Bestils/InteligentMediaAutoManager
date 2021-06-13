@@ -54,7 +54,6 @@ function showComments(){
     var comment_label = document.getElementById("comment_label");
     var option_label = document.getElementById("option_label");
     var list = document.getElementById("options");
-    console.log(list);
     if (checked == true){
         title.style.color = "green";
         comment_label.style.display = "block";

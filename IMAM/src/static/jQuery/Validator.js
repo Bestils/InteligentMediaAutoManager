@@ -40,7 +40,7 @@ $(document).ready(function(){
 
     $("#unfollow_non_followers_amount_field").focusout(function(){
         valueError("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", amount_error)
-        checkBoth("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", "unfollow_non_followers_time_field", "unfollow_non_followers_time_field");
+        checkBoth("unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field", "unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field");
     });
 
     $("#unfollow_non_followers_time_field").focusout(function(){
@@ -48,17 +48,15 @@ $(document).ready(function(){
         checkBoth("unfollow_non_followers_time_field", "unfollow_non_followers_time_error_field", "unfollow_non_followers_amount_field", "unfollow_non_followers_amount_error_field");
     });
 
-    $("#unfollow_new_followers_amount_field").focusout(function(){
-        valueError("unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", amount_error);
-        checkBoth( "unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field", "unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field");
-    });
-
-    $("#unfollow_new_followers_time_field").focusout(function(){
-        valueError("unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field", delay_error);
-        checkBoth("unfollow_new_followers_time_field", "unfollow_new_followers_time_error_field", "unfollow_new_followers_amount_field", "unfollow_new_followers_amount_error_field");
-    });
+    $("#options").focusout(function(){
+        checkNull("options");
+    })
 
     $("input").focusout(function(){
+        checkForm(red);
+    });
+
+    $("select").focusout(function(){
         checkForm(red);
     });
 })
@@ -66,17 +64,19 @@ $(document).ready(function(){
 function checkForm(red)
 {
     var elements = document.getElementsByTagName("input");
+    var menu = document.getElementById("options");
+
     for(var i = 0; i < elements.length;i++)
     {
         var style = getComputedStyle(elements[i]);
         var border = style.borderLeftColor;
-        console.log(border);
-        if(border == red)
+
+        if (border == red)
         {
             document.getElementById("launch").style.display="none";
             break
         }
-        else
+        else if (border == green)
         {
             document.getElementById("launch").style.display="block";
         }
@@ -188,6 +188,20 @@ function checkBoth(input, input_error, other, other_error)
     else if(other_style.borderLeftColor == green && value.length == 0)
     {
         setError(input, input_error, "This field can't be empty");
+    }
+}
+
+function checkNull(){
+    var menu = document.getElementById("options");
+    if(menu.value != 'first')
+    {
+        menu.style.borderWidth = "1px";
+        menu.style.borderColor = "green";
+    }
+    else
+    {
+        menu.style.borderWidth = "0.5px";
+        menu.style.borderColor = "lightgray";
     }
 }
 
