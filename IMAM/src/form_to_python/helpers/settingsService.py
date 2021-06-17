@@ -6,12 +6,11 @@ def get(request):
     settings = {
         'username': request.POST.get('username'),
         'password': request.POST.get('password'),
-        'photo_tags': request.POST.get('like_photo_tag').split(' '),
+        'tags': request.POST.get('like_photo_tag'),
         'photo_prob': request.POST.get('like_photo_probability'),
-        'video_tags': request.POST.get('video_tag').split(' '),
         'video_prob': request.POST.get('like_video_probability'),
-        'location': request.POST.get('location').split(' '),
-        'follow_tags': request.POST.get('follow_tags').split(' '),
+        'location': request.POST.get('location'),
+        'follow_names': request.POST.get('follow_tags'),
         'unfollow_amount': request.POST.get('unfollow_amount'),
         'unfollow_delay': request.POST.get('unfollow_delay'),
         'option': request.POST.get('option')
@@ -23,9 +22,9 @@ def get(request):
 
 
 def configure(settings):
-    instagram = InstagramFunctions(settings['username'], settings['password'])
-    instagram.startMachine(settings['photo_tags'], settings['photo_prob'], settings['video_tags'], settings['video_prob'], settings['location'], settings['unfollow_amount'], settings['unfollow_delay'], settings['option'], settings['follow_tags'])
-
+    instagram=  InstagramFunctions(settings['username'],settings['password'])
+    instagram.startMachine(settings['location'],[settings['tags']], settings['photo_prob'], settings['video_prob'], settings['follow_names'], settings['follow_names'],
+                           settings['unfollow_delay'], settings['unfollow_amount'],["test","data"])
 
 def check_if_null(settings):
     for key in settings:
