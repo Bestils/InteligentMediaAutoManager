@@ -13,20 +13,20 @@ def main(request):
 
 def botSettings(request):
     all_db_comments = commentService.read_all()
+    #
+    # try:
+    settings = settingsService.get(request)
 
-    try:
-        settings = settingsService.get(request)
+    if settings == True:
+        raise customExceptions.SettingsNullException()
 
-        if settings == True:
-            raise customExceptions.SettingsNullException()
-
-        settingsService.configure(settings)
-    except NameError:
-        return render(request, 'Start.html', {'login_info': 'Your login or password is incorrect. Please try again', 'db_comments': all_db_comments})
-    except ValueError:
-        return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
-    except customExceptions.SettingsNullException:
-        return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
+    settingsService.configure(settings)
+    # except NameError:
+    #     return render(request, 'Start.html', {'login_info': 'Your login or password is incorrect. Please try again', 'db_comments': all_db_comments})
+    # except ValueError:
+    #     return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
+    # except customExceptions.SettingsNullException:
+    #     return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
 
 def comments(request):
     commentService.read_all()

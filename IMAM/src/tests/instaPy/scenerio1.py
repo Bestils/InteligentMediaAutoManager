@@ -32,6 +32,6 @@ with smart_run(session):
         media='Photo')
 
     session.follow_user_followers(['chrisburkard', 'danielkordan'],
-                                  amount=40, randomize=False,   interact=True, sleep_delay=200)
+                                  amount=2, randomize=False,   interact=True, sleep_delay=200)
 
     session.join_pods(topic='entertainment', engagement_mode='no_comments')
