@@ -14,7 +14,7 @@ def main():
         data_dct = json.load(data)
 
     result = mongo.insert_one(data_dct)
-    print('Inserted post id %s ' % result.inserted_id)
+    logging.info(('Inserted post id %s ' % result.inserted_id)
 
 if __name__ == "__main__":
     main()

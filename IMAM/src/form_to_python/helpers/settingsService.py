@@ -1,5 +1,5 @@
-from instagram.domain.instagramFunctions import InstagramFunctions
 from form_to_python.helpers.commentService import read_one
+from instagram.domain.instagramFunctions import InstagramFunctions
 
 
 def get(request):
@@ -22,9 +22,11 @@ def get(request):
 
 
 def configure(settings):
-    instagram=  InstagramFunctions(settings['username'],settings['password'])
-    instagram.startMachine(settings['location'],settings['tags'], settings['photo_prob'], settings['video_prob'], settings['follow_names'], settings['follow_names'],
-                           settings['unfollow_delay'], settings['unfollow_amount'],["test","data"])
+    instagram = InstagramFunctions(settings['username'], settings['password'])
+    instagram.startMachine(settings['location'], settings['tags'], settings['photo_prob'], settings['video_prob'],
+                           settings['follow_names'],
+                           settings['unfollow_delay'], settings['unfollow_amount'], ["test", "data"])
+
 
 def check_if_null(settings):
     for key in settings:

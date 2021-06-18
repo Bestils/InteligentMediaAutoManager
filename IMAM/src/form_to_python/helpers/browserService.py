@@ -1,3 +1,4 @@
+import logging
 import os
 import signal
 import subprocess
@@ -12,7 +13,7 @@ def kill_browser():
         if (os.name == 'nt'):
             os.popen("tskill chrome")
     except:
-        print("An error occured while exiting browser.")
+        logging.debug("An error occured while exiting browser.")
 
 
 def kill_server():
@@ -25,14 +26,14 @@ def kill_server():
         elif (os.name == 'nt'):
             os.popen("tskill python")
         else:
-            print("Can't find proper OS.")
+            logging.info("Can't find proper OS.")
     except:
-        print("An error occured while disabling server.")
+        logging.debug("An error occured while disabling server.")
 
 
 def information():
-    print('------------------------------------------------------')
-    print('------------------------------------------------------')
-    print('-----------------------EXITING------------------------')
-    print('------------------------------------------------------')
-    print('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
+    logging.info('-----------------------EXITING------------------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')

@@ -1,5 +1,7 @@
 import json
+
 from bson.objectid import ObjectId
+
 from mongo.mongoService import MongoClientService
 
 mongo = MongoClientService("db", "comments", "localhost", 27017, "mongodbuser", "mongoPassword")
@@ -47,11 +49,14 @@ def read_all():
         comments_list.append(comment)
     return comments_list
 
+
 def read_one(_id):
     return mongo.db.find_one({'_id': ObjectId(_id)})
 
+
 def read_tmp_comment_list():
     return comments
+
 
 def delete(_id):
     mongo.db.delete_one({'_id': ObjectId(_id)})

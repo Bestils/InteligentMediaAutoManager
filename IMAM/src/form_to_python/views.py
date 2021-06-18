@@ -4,9 +4,14 @@ from form_to_python.helpers import settingsService
 from form_to_python.helpers import customExceptions
 from form_to_python.helpers import browserService
 from form_to_python.helpers import commentService
-
+import logging, sys
 
 def main(request):
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------Welcome in IMAM Dashboard ----------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
     all_db_comments = commentService.read_all()
     return render(request, 'Start.html', {'db_comments' : all_db_comments})
 
