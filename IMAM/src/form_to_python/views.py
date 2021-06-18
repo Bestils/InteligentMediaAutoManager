@@ -32,7 +32,7 @@ def botSettings(request):
     except customExceptions.SettingsNullException:
         return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
 
- settingsService.configure(settings)
+    settingsService.configure(settings)
 
 def comments(request):
     commentService.read_all()
