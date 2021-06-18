@@ -35,12 +35,14 @@ def comments(request):
 
 def add_comment_record(request):
     comments_with_new_one = commentService.configure_record(request)
+    print(comments_with_new_one)
     return render(request, 'CommentSet.html', {'db_comments' : comments_with_new_one})
 
 
 def add_single_comment(request):
     single_comment = commentService.add(request)
     all_db_comments = commentService.read_all()
+    print(all_db_comments)
     return render(request, 'CommentSet.html', {'comments' : single_comment, 'db_comments' : all_db_comments})
 
 

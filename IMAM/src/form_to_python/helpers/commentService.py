@@ -14,10 +14,10 @@ def configure_record(request):
     setting = {
         'author_name': request.POST.get('author_name'),
         'description': request.POST.get('description'),
-        'commentsSet': {
+        'commentsSet': [{
             'mandatory_words': tags,
             'comments': comments
-        }
+        }]
     }
     setting_dict = toJsonFormatedDict
     mongo.db.insert_one(setting)
@@ -34,6 +34,7 @@ def toJsonFormatedDict(value):
 
 def add(request):
     single_comment = request.POST.get('comment')
+    print(single_comment)
     comments.append(single_comment)
     return comments
 
