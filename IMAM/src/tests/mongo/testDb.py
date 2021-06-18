@@ -34,7 +34,7 @@ class MyTestCase(unittest.TestCase):
             data_dct = json.load(data)
 
         result = self.raw_client["testDB"]["comments"].insert_one(data_dct)
-        print('Inserted post id %s ' % result.inserted_id)
+        logging.debug(('Inserted post id %s ' % result.inserted_id)
 
     def testConnection(self):
         try:
@@ -77,7 +77,7 @@ class MyTestCase(unittest.TestCase):
         comments_list = []
         all = self.mongo.readAll()  # read all comments form db
         for comment in all:
-            print(comment)
+            logging.debug((comment)
             comments_list.append(comment)
         self.assertEqual(comments_list.__sizeof__() > 0, True)
 

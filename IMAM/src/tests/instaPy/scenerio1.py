@@ -1,4 +1,3 @@
-
 from instapy import InstaPy
 from instapy import smart_run
 
@@ -22,16 +21,18 @@ with smart_run(session):
     session.set_do_like(enabled=True, percentage=100)
     session.set_do_comment(enabled=True, percentage=25)
     session.set_comments(
-        ['Nice shot! @{}', 'I love your profile! @{}', '@{} Love it!',
-        '@{} :heart::heart:',
-        'Love your posts @{}',
-        'Looks awesome @{}',
-        'Getting inspired by you @{}',
-        ':raised_hands: Yes!',
+        ['Looks great @{}',
+         'Getting inspired by you yoo @{}',
+         'Nice shot! @{}', 'I love your profile! @{}', '@{} Love it!',
+         '@{} :heart::heart:',
+         'go girl :fire: :alien:',
+         'you are a :gun:',
+         'Love your posts @{}',
+         ':raised_hands: Yes!',
          '@{}:revolving_hearts::revolving_hearts:', '@{}:fire::fire::fire:'],
         media='Photo')
 
     session.follow_user_followers(['chrisburkard', 'danielkordan'],
-                                  amount=40, randomize=False,   interact=True, sleep_delay=200)
+                                  amount=2, randomize=False, interact=True, sleep_delay=200)
 
     session.join_pods(topic='entertainment', engagement_mode='no_comments')

@@ -4,9 +4,14 @@ from form_to_python.helpers import settingsService
 from form_to_python.helpers import customExceptions
 from form_to_python.helpers import browserService
 from form_to_python.helpers import commentService
-
+import logging, sys
 
 def main(request):
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------Welcome in IMAM Dashboard ----------------')
+    logging.info('------------------------------------------------------')
+    logging.info('------------------------------------------------------')
     all_db_comments = commentService.read_all()
     return render(request, 'Start.html', {'db_comments' : all_db_comments})
 
@@ -14,15 +19,20 @@ def main(request):
 def botSettings(request):
     all_db_comments = commentService.read_all()
 
+    try:
+        settings = settingsService.get(request)
 
-    settings = settingsService.get(request)
+        if settings == True:
+            raise customExceptions.SettingsNullException()
 
-    if settings == True:
-        raise customExceptions.SettingsNullException()
+    except NameError:
+        return render(request, 'Start.html', {'login_info': 'Your login or password is incorrect. Please try again', 'db_comments': all_db_comments})
+    except ValueError:
+        return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
+    except customExceptions.SettingsNullException:
+        return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
+
     settingsService.configure(settings)
-
-
-
 
 def comments(request):
     commentService.read_all()

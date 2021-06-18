@@ -1,4 +1,6 @@
-from mongo.mongoService import  MongoClientService
+import logging
+
+from mongo.mongoService import MongoClientService
 
 
 def main():
@@ -11,6 +13,8 @@ def main():
     all = mongo.readAll()
 
     for doc in all:
-        print(doc)  # or do something with the document
+        logging.info(doc)  # or do something with the document
+
+
 if __name__ == "__main__":
     main()

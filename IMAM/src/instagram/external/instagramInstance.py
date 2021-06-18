@@ -14,7 +14,7 @@ class InstagramInstance:
         InstagramFunctions.followByLocation(session, location)
 
     def followByTags(session, tagList):
-        InstagramFunctions.followByTags( session, tagList)
+        InstagramFunctions.followByTags(session, tagList)
 
     # Like activity
     def likePhotosByTags(session, tagList, probability):
@@ -28,7 +28,7 @@ class InstagramInstance:
                                                 unfollowDelay)
 
     def unfollowNewFollowers(session, amount, unfollowDelay):
-        InstagramFunctions.unfollowNewFollowers( session, amount,
+        InstagramFunctions.unfollowNewFollowers(session, amount,
                                                 unfollowDelay)
 
     def setPods(session, topic, mode):
