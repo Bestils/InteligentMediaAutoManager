@@ -67,3 +67,17 @@ class podstMode(Enum):
     heavy = 'heavy'
     light = 'light'
     normal = 'normal'
+
+# engagement_mode: Desided engagement mode for your posts.
+# There are four levels of engagement modes 'no_comments', 'light', 'normal' and 'heavy'(normal by default).
+# Setting engagement_mode to 'no_comments' makes you receive zero comments on your posts from pod members,
+# 'light' encourages approximately 10% of pod members to comment on your post,
+# similarly it's around 30% and 90% for 'normal'
+# 'heavy' modes respectively.
+# Note: Liking, following or any other kind of engagements doesn't follow these modes.
+
+class podstMode(Enum):
+    noComment = 'no_comment'
+    heavy = 'heavy'
+    light = 'light'
+    normal = 'normal'
