@@ -16,8 +16,6 @@ def get(request):
         'option': request.POST.get('option')
     }
     settings['option'] = getComments(settings)
-    if check_if_null(settings):
-        settings = True
     return settings
 
 
@@ -28,17 +26,11 @@ def configure(settings):
                            settings['unfollow_delay'], settings['unfollow_amount'], ["test", "data"])
 
 
-def check_if_null(settings):
-    for key in settings:
-        if settings[key] != '' and settings[key] != settings['username'] and settings[key] != settings['password']:
-            return False
-    return True
-
-
 def getComments(settings):
     comments = {}
     if (settings['option'] != 'first'):
         commentSet = read_one(settings['option'])
         comments = commentSet['commentsSet']
         comments = comments[0]
+        print(comments)
     return comments

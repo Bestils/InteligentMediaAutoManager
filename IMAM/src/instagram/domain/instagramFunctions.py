@@ -1,10 +1,7 @@
 import logging
-import sys
 from enum import Enum
 
 from instapy import InstaPy, smart_run
-
-logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 
 class InstagramFunctions:
@@ -28,17 +25,16 @@ class InstagramFunctions:
                 self.session.set_delimit_commenting(enabled=True, max_comments=200, min_comments=1)
 
             if (location == ''):
-                self.session.follow_by_locations(location, amount=0)
+                self.session.follow_by_locations(location, amount=2)
             if (tagList != ''):
-                logging.debug("follow")
-                self.session.follow_user_followers(followingNames, amount=0)
+                self.session.follow_user_followers(followingNames, amount=2)
 
             if (tagList != '' and likeProbability != ''):
                 logging.debug("likeByTags")
                 logging.debug(likeProbability)
                 logging.debug(tagList)
                 self.session.set_user_interact(randomize=True, percentage=likeProbability)
-                self.session.like_by_tags(tagList, amount=10)
+                self.session.like_by_tags(tagList, amount=2)
 
             if (unfolowAmount != '' and unfollowDelay != ''):
                 logging.debug("unfollowDelay")
@@ -49,9 +45,9 @@ class InstagramFunctions:
                                             style="FIFO",
                                             unfollow_after=unfollowDelay,
                                             sleep_delay=60)
-                session.unfollow_users(amount=200, instapy_followed_enabled=True,
-                                       instapy_followed_param="nonfollowers", style="FIFO", unfollow_after=12 * 60 * 60,
-                                       sleep_delay=601)
+                self.session.unfollow_users(amount=500, InstapyFollowed=(True, "nonfollowers"),
+                                       style="FIFO",
+                                       unfollow_after=12 * 60 * 60, sleep_delay=601)
 
 
 # engagement_mode: Desided engagement mode for your posts.

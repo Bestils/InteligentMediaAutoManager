@@ -30,8 +30,8 @@ $(document).ready(function(){
         checkBoth("like_video_tags_field", "like_video_tags_error_field", "like_video_probability_field", "like_video_probability_error_field");
     });
 
-    $("#follow_names_field").focusout(function(){
-        wrongCharsDetector("follow_names_field", "follow_names_error_field", tag_error, possible_tag_chars);
+    $("#follow_by_tags_field").focusout(function(){
+        wrongCharsDetector("follow_by_tags_field", "follow_by_tags_error_field", tag_error, possible_tag_chars);
     });
 
     $("#locations_field").focusout(function(){

@@ -22,17 +22,9 @@ def botSettings(request):
     try:
         settings = settingsService.get(request)
 
-        if settings == True:
-            raise customExceptions.SettingsNullException()
-
-    except NameError:
-        return render(request, 'Start.html', {'login_info': 'Your login or password is incorrect. Please try again', 'db_comments': all_db_comments})
+        settingsService.configure(settings)
     except ValueError:
-        return render(request, 'Start.html', {'settings_error': 'Somme error occured. Check console logs', 'db_comments': all_db_comments})
-    except customExceptions.SettingsNullException:
-        return render(request, 'Start.html', {'settings_error' : "The bot is unset. Please fill the settings.",'db_comments' : all_db_comments})
-
-    settingsService.configure(settings)
+        return render(request, 'Start.html', {'settings_error': 'Some error occured. Check console logs', 'db_comments': all_db_comments})
 
 def comments(request):
     commentService.read_all()
