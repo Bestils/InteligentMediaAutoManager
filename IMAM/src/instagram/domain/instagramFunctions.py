@@ -22,7 +22,7 @@ class InstagramFunctions:
                 logging.debug(comments)
                 self.session.set_do_comment(enabled=True, percentage=80)
                 self.session.set_comments(comments)
-                self.session.set_delimit_commenting(enabled=True, max_comments=200, min_comments=1)
+                self.session.set_delimit_commenting(enabled=True, max_comments=200, min_comments=0)
 
             if (location == ''):
                 self.session.follow_by_locations(location, amount=2)
